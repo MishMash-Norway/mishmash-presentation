@@ -1,55 +1,26 @@
-# MishMash — a reusable presentation
+# MishMash - Presentation Slide Deck
 
-A generic introduction to MishMash, the Norwegian Centre for AI and Creativity.
-One deck that scales from a three-minute pitch to a thirty-minute talk, built
-with [reveal.js](https://revealjs.com) and styled in the 2026 MishMash visual
-identity.
+A generic introduction to MishMash Centre for AI and Creativity. One deck that scales from a three-minute pitch to a thirty-minute talk, built with [reveal.js](https://revealjs.com) and styled in the 2026 MishMash visual identity.
 
-Open `index.html` in a browser, or serve the folder (`python3 -m http.server`)
-so the embedded live pages work.
+You can view the presentation at [here](https://mishmash-norway.github.io/mishmash-presentation/), or from the local `index.html` if you download this repo to your own computer.
 
-## Talk length
+## Organisation
 
-The deck is one stack per question. The question page heads the stack and its
-slides hang below it, so how long the talk runs is decided by how far down you
-go — in the room, not in advance.
+The deck is organised in two directions. The key chapters (the questions) are laid out horizontally, and their slides hang below them, with progressively more detail below. That means that it is easy to adjust the duration by how far down you go.
 
-- **→** skips to the next question
-- **↓** works through the one you are on
-- **Space** walks everything, down then right
+## Duration 
 
-Each stack is ordered by priority rather than by narrative, so the first **↓**
-is always the slide worth keeping at three minutes. Roughly: one down per
-question is three minutes, two or three is ten, all the way down is thirty.
+Rule of thumb: go one down per question for a 3-minute presentation. Two or three down for a 10-minute presentation, and all down would be 30–45 minutes. 
 
-The readout in the top right names the question and how far down it you are
-("What? 3/9"). Press **Esc** for the overview — one column per question.
+## Controls
 
-Every slide has speaker notes, and they carry the sentences that are
-deliberately not on the screen. Press **S** for the speaker view, **D** for
-dark mode, and **Esc** for the overview.
+You navigate with **→** between questions and **↓** downwards. You can use **space** to walk through everything, down then right. 
 
-## Dark mode
-
-**D** toggles it, and the choice is remembered. It always starts light,
-whatever the machine prefers — a talk is nearly always projected, and a deck
-that goes dark because the laptop is in dark mode is a surprise nobody wants
-in front of a room.
-
-The identity has no dark palette, so dark mode inverts its two poles: ink
-becomes the foreground and the page becomes ink. Every rule in the stylesheet
-speaks in tokens, so swapping the two carries the whole deck. The question
-pages are the exception: they are flat pastel surfaces that want dark text
-either way, so they re-declare the light tokens for themselves and look the
-same in both modes.
-
-Line drawings are marked `class="fig"` and inverted; photographs, screenshots
-and portraits are not.
+Press **Esc** to get an overview of all the slides. **S** gives you speaker view, and **D** switches between light and dark modes.
 
 ## Structure
 
-Seven questions, each opening on a full-bleed page in one of the identity's
-surface colours, cycling so that no two consecutive ones match:
+Seven questions, each opening on a full-bleed page in one of the identity's surface colours, cycling so that no two consecutive ones match:
 
 1. **Why?** — the mishmash of opinions about AI, the name, the definitions
 2. **What?** — the objective in one sentence; create, explore, reflect
@@ -59,10 +30,9 @@ surface colours, cycling so that no two consecutive ones match:
 6. **When?** — a five-year centre, caught near its start
 7. **Join** — MeshUp, membership, conferences
 
-## Adapting it for a particular talk
+## Local adaptations
 
-Nothing needs editing in the HTML for a normal reuse — the deck is generic by
-default and takes what is local to a given talk from the URL.
+Feel free to fork and edit. There are also some tricks for quick adaptations: 
 
 | Parameter | Effect |
 | --- | --- |
@@ -72,8 +42,7 @@ default and takes what is local to a given talk from the URL.
 
 Combine them freely: `index.html?place=uia&venue=Kristiansand`.
 
-To make the deck local to a new place, add an entry to the `LOCAL` table near
-the foot of `index.html`:
+To make the deck local to a new place, add an entry to the `LOCAL` table near the foot of `index.html`:
 
 ```js
 ntnu: {
@@ -82,44 +51,9 @@ ntnu: {
 }
 ```
 
-## Live content
-
-Two slides load from the network:
-
-- the people network, framed from `mishmash.no/people/network/`
-- the *Strings On-Line* video, from YouTube
-
-Both are preloaded when the deck opens, so they are ready when you reach them.
-If the room has no usable network, add `&static=1`.
-
 ## Design
 
-The deck follows `BRAND.md` in
-[mishmash-web](https://github.com/MishMash-Norway/mishmash-web): flat surfaces,
-hard edges, 2 px ink rules, and no gradients, shadows or rounded corners.
-Display type is Roboto Condensed 700, body text is Inter, both self-hosted in
-`fonts/`. Colour tokens are copied from `site/assets/css/brand.css` into the
-stylesheet at the top of `index.html`.
-
-Each question page is one flat surface colour with nothing on it but the
-question. The seven cycle through the four surfaces — purple, blue, pink, green,
-purple, blue, pink — so no two consecutive pages match. That departs from the
-website's section-to-surface table in `BRAND.md`, which governs mishmash.no
-rather than a deck. Each question page also sets the accent colour for the
-slides under it, which shows as the rule beneath every heading.
-
-The figures carried over from earlier decks were recoloured from the superseded
-palette (`#A7A1F4`, `#C1F7AE`, `#363644`) to the 2026 tokens.
-
-## Title slide
-
-The wordmark is inlined (not linked) so that it works over `file://` and so
-CSS and script can reach inside it. `js/wordmark.js` is ported from
-mishmash.no: it rolls the I/A, S and H columns at random intervals like a
-split-flap board. Hovering the mark rolls all three and steps the slide to the
-next identity pairing — green/black, purple/green, blue/yellow, pink/red — so
-the surface and the wordmark always stay a legal pair. Anyone who has asked
-for reduced motion gets the mark held still.
+The deck follows `BRAND.md` in [mishmash-web](https://github.com/MishMash-Norway/mishmash-web). 
 
 ## PDF
 
@@ -129,17 +63,8 @@ python3 tools/build_pdf.py --place uia     # with the local slide filled in
 python3 tools/build_pdf.py --static        # with the offline stills
 ```
 
-It screenshots each slide with headless Chrome and assembles the pages with
-Pillow. Requires `google-chrome` and `pillow`.
-
-## Sources
-
-Content is drawn from [mishmash.no](https://mishmash.no) — the centre
-description, work package pages, organisation pages and FAQ — and from an
-earlier talk on AI and creativity. Figures and photographs come from that deck
-and from the website.
+It screenshots each slide with headless Chrome and assembles the pages with Pillow. Requires `google-chrome` and `pillow`.
 
 ## Licence
 
-MIT (see `LICENSE`). Note that the photographs, logos and figures are not
-covered by it; they belong to MishMash and its partners.
+MIT (see `LICENSE`). Note that the photographs, logos and figures are not covered by it; they belong to MishMash and its partners.
