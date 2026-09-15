@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Label layer only. Transparent, and shares the viewBox of
+     mm-cube-notext.svg so it can be stacked straight on top of it. -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="70 210 460 370">
+  <text font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#231f20" transform="translate(425,450) rotate(-90)"> Machines </text>
+  <text font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#231f20" transform="translate(465,425) rotate(-90)"> Humans </text>
+  <text font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#231f20" transform="translate(502,400) rotate(-90)"> Society </text>
+</svg>

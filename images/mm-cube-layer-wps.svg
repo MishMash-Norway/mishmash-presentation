@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Label layer only. Transparent, and shares the viewBox of
+     mm-cube-notext.svg so it can be stacked straight on top of it. -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="70 210 460 370">
+  <g font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="white">
+    <text x="90" y="328">WP1: AI for artistic performances</text>
+    <text x="90" y="362">WP2: AI for artistic processes</text>
+    <text x="90" y="396">WP3: Creative use of AI in health and well-being</text>
+    <text x="90" y="432">WP4: Creative use of AI in education</text>
+    <text x="90" y="465">WP5: AI in the creative and cultural industries</text>
+    <text x="90" y="499">WP6: AI for cultural heritage</text>
+    <text x="90" y="533">WP7: AI for creative problem-solving</text>
+  </g>
+</svg>

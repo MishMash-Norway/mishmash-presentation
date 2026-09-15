@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Label layer only. Transparent, and shares the viewBox of
+     mm-cube-notext.svg so it can be stacked straight on top of it. -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="70 210 460 370">
+  <text font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="white" transform="translate(170,295) rotate(-30)"> Create </text>
+  <text font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="white" transform="translate(275,295) rotate(-30)"> Explore </text>
+  <text font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="white" transform="translate(380,295) rotate(-30)"> Reflect </text>
+</svg>
