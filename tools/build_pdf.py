@@ -35,17 +35,28 @@ CHROME = next((c for c in ("google-chrome", "chromium", "chromium-browser")
 
 
 def slide_addresses():
-    """Every slide as an "h" or "h/v" address, in the order Space walks them."""
+    """Every slide as an "h" or "h/v" address, in the order Space walks them.
+
+    Counts tag nesting rather than trusting indentation, which drifts as the
+    deck is edited.
+    """
     html = open(INDEX, encoding="utf8").read()
     body = html.split('<div class="slides">', 1)[1].rsplit("</div>\n</div>", 1)[0]
-    tops = re.findall(r"\n<section(?:\s[^>]*)?>.*?\n</section>", body, re.S)
-    out = []
-    for h, top in enumerate(tops):
-        kids = re.findall(r"<section[^>]*>(?:(?!<section).)*?</section>", top, re.S)
-        if len(kids) > 1:
-            out += [f"{h}/{v}" for v in range(len(kids))]
+
+    out, depth, h, v, had_child = [], 0, -1, 0, False
+    for m in re.finditer(r"<section\b[^>]*>|</section\s*>", body):
+        if m.group(0).startswith("</"):
+            depth -= 1
+            if depth == 0 and not had_child:
+                out.append(str(h))            # a stack of one: plain "h"
         else:
-            out.append(str(h))
+            if depth == 0:
+                h, v, had_child = h + 1, 0, False
+            else:
+                out.append(f"{h}/{v}")
+                v += 1
+                had_child = True
+            depth += 1
     return out
 
 

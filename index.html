@@ -220,6 +220,60 @@
 .split h3 { font-size: 1.3em; }
 .split ul { margin: 0 0 0 0.9em; }
 
+/* Organisation map, laid out as a grid rather than drawn: the spine runs down
+   the middle column, advisory bodies sit either side on dashed links, and the
+   work packages hang off a bus at the foot. Solid means answers to, dashed
+   means advises. */
+.org {
+  display: grid;
+  grid-template-columns: 1fr 70px 1.45fr 70px 1fr;
+  align-items: center;
+  justify-items: stretch;
+  font-size: 0.7em;
+}
+.org-box {
+  border: 2px solid var(--mm-ink);
+  background: var(--mm-white);
+  font-family: var(--mm-font-display);
+  font-size: 1.2em;
+  line-height: 1.1;
+  text-align: center;
+  padding: 0.6em 0.5em;
+}
+.org-box.green  { background: var(--mm-green-tint); }
+.org-box.purple { background: var(--mm-purple-tint); }
+.org-box.blue   { background: var(--mm-blue-tint); }
+.org-box.pink   { background: var(--mm-pink-tint); }
+.org-dash { border-top: 3px dashed var(--mm-ink); }
+.org-stem { width: 3px; height: 42px; background: var(--mm-ink); margin: 0 auto; }
+
+.org-wps {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+  position: relative;
+  padding-top: 30px;
+}
+.org-wps::before {                       /* the bus the seven hang from */
+  content: "";
+  position: absolute; top: 0;
+  left: calc(100% / 14); right: calc(100% / 14);
+  border-top: 3px solid var(--mm-ink);
+}
+.org-wps .org-box { position: relative; }
+.org-wps .org-box::before {              /* each one's drop to the bus */
+  content: "";
+  position: absolute; top: -30px; left: 50%;
+  width: 3px; height: 30px; margin-left: -1.5px;
+  background: var(--mm-ink);
+}
+
+/* The disciplinarity figure is inlined rather than linked, so that each of the
+   five bubbles can be a fragment of its own. */
+.disc { width: 88%; margin: 0 auto; }
+.disc svg { display: block; width: 100%; height: auto; max-height: 56vh; }
+
 /* A figure built up in layers: the first image sets the size, the others sit
    exactly on top of it and arrive as fragments. */
 .layers { position: relative; margin: 0 auto; }
@@ -271,6 +325,7 @@
 .hl.pink   { background: var(--mm-pink); }
 
 /* Definition list: term in the display face, definition beside it. */
+.defs.agenda > div { grid-template-columns: 10em 1fr; }
 .defs { margin: 0; font-size: 0.86em; }
 .defs > div { display: grid; grid-template-columns: 7.5em 1fr; gap: 0 1.1em; align-items: baseline;
               padding: 0.5em 0; border-top: 2px solid var(--mm-ink-15); }
@@ -287,15 +342,8 @@
 .timeline b { display: block; font-family: var(--mm-font-display); font-size: 1.5em; letter-spacing: -0.01em; }
 
 /* Map */
-.mapwrap { position: relative; width: 100%; max-width: 900px; margin: 0 auto; }
-.mapwrap svg { width: 100%; height: auto; max-height: 80vh; display: block; }
-.mapwrap .city { fill: var(--mm-ink); }
-.mapwrap .here { fill: var(--mm-red); }
-.mapwrap text {
-  font-family: var(--mm-font-body); font-size: 20px; fill: var(--mm-ink);
-  paint-order: stroke fill; stroke: var(--mm-white); stroke-width: 5px; stroke-linejoin: round;
-}
-.mapwrap text.hilite { font-weight: 700; fill: var(--mm-red); font-size: 24px; }
+.mapwrap { position: relative; width: 100%; max-width: 620px; margin: 0 auto; }
+.mapwrap img { width: 100%; height: auto; max-height: 76vh; display: block; }
 
 /* Embeds */
 .embed { width: 1600px; height: 900px; border: 2px solid var(--mm-ink); margin: 0 auto; overflow: hidden; }
@@ -718,8 +766,126 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </aside>
   </section>
 
-    <section>
-  <h2>Artistic and scientific research</h2>
+    <section class="center">
+  <div class="disc">
+<svg width="1024" height="300"
+     viewBox="0 0 1024 300"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+            refX="10" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+    </marker>
+
+    <style>
+      text {
+        font-family: "Helvetica, Arial, sans-serif";
+        fill: #000;
+      }
+    </style>
+  </defs>
+
+  <!-- No background rect: transparent where not drawn -->
+
+  <!-- Common parameters -->
+  <!-- Big circles centers along x: 110, 310, 510, 710, 910; y=150 -->
+  <!-- Radius ~85 -->
+  <g class="fragment" data-fragment-index="0">
+  <!-- Inter-disciplinary -->
+  <circle cx="710" cy="150" r="85" fill="white" stroke="black" stroke-width="3"/>
+
+  <!-- seven inside: center + hex ring R=12 (clear overlap, still readable) -->
+  <circle cx="710" cy="162" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="699.6" cy="156" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="699.6" cy="144" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="710" cy="138" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="720.4" cy="144" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="720.4" cy="156" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="710" cy="150" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+
+  <text x="710" y="24" text-anchor="middle" font-size="30">Inter-</text>
+  <text x="710" y="52" text-anchor="middle" font-size="30">disciplinary</text>
+  </g>
+  <g class="fragment" data-fragment-index="1">
+  <!-- Multi-disciplinary -->
+  <circle cx="510" cy="150" r="85" fill="white" stroke="black" stroke-width="3"/>
+
+  <!-- center + hex: ring R=16 so each r=8 satellite is tangent to center (no overlap) and tangent to neighbours -->
+  <circle cx="510" cy="166" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="496.1" cy="158" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="496.1" cy="142" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="510" cy="134" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="523.9" cy="142" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="523.9" cy="158" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="510" cy="150" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+
+  <text x="510" y="24" text-anchor="middle" font-size="30">Multi-</text>
+  <text x="510" y="52" text-anchor="middle" font-size="30">disciplinary</text>
+  </g>
+  <g class="fragment" data-fragment-index="2">
+  <!-- Cross-disciplinary -->
+  <circle cx="310" cy="150" r="85" fill="white" stroke="black" stroke-width="3"/>
+
+  <!-- same layout as Multi (was ring R=50): center + hex inside big circle -->
+  <circle cx="310" cy="200" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="266.7" cy="175" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="266.7" cy="125" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="310" cy="100" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="353.3" cy="125" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="353.3" cy="175" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="310" cy="150" r="8" fill="white" stroke="black" stroke-width="1.5"/>
+
+  <text x="310" y="24" text-anchor="middle" font-size="30">Cross-</text>
+  <text x="310" y="52" text-anchor="middle" font-size="30">disciplinary</text>
+  </g>
+  <g class="fragment" data-fragment-index="3">
+  <!-- Intra-disciplinary -->
+  <circle cx="110" cy="150" r="85" fill="white" stroke="black" stroke-width="3"/>
+  <circle cx="110" cy="150" r="10" fill="white" stroke="black" stroke-width="2"/>
+
+  <text x="110" y="24" text-anchor="middle" font-size="30">Intra-</text>
+  <text x="110" y="52" text-anchor="middle" font-size="30">disciplinary</text>
+  </g>
+  <g class="fragment" data-fragment-index="4">
+  <!-- Trans-disciplinary -->
+  <circle cx="910" cy="150" r="85" fill="white" stroke="black" stroke-width="3"/>
+
+  <!-- seven: center + hex (ring R=7); tighter than before, still enough offset to read seven strokes -->
+  <circle cx="910" cy="157" r="10" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="903.9" cy="153.5" r="10" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="903.9" cy="146.5" r="10" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="910" cy="143" r="10" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="916.1" cy="146.5" r="10" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="916.1" cy="153.5" r="10" fill="white" stroke="black" stroke-width="1.5"/>
+  <circle cx="910" cy="150" r="10" fill="white" stroke="black" stroke-width="1.5"/>
+
+  <text x="910" y="24" text-anchor="middle" font-size="30">Trans-</text>
+  <text x="910" y="52" text-anchor="middle" font-size="30">disciplinary</text>
+<!-- Dotted path with arrow pointing at intra-disciplinary (left) -->
+  <path d="
+      M 910 238
+      L 910 262
+      L 110 262
+      L 110 238"
+        fill="none"
+        stroke="black"
+        stroke-width="4"
+        stroke-dasharray="4,6"
+        marker-end="url(#arrowhead)"/>
+  </g>
+</svg>
+  </div>
+  <p class="caption center">Jensenius, <em>Sound Actions</em> (MIT Press, 2022)</p>
+  <aside class="notes">
+  Five kinds of disciplinarity, built in the order that makes the argument rather than left to right.
+  Inter first, because it is the word everyone uses. Then multi: side by side, each contributing from their own discipline. Then cross: borrowing a method but staying home. Then intra: depth in one field, which is where most of us actually live. And trans last: something that belongs to no existing discipline, with the arrow running all the way back to feed the individual disciplines again.
+  Do you work interdisciplinary, or are you interdisciplinary? Most so-called interdisciplinary projects are cross-disciplinary: everyone stays comfortable in their own discipline and contributes a piece. The real thing starts when the terminology breaks down and people step on each other's toes. It is painful, and it is where the new things come from.
+  A centre needs all of them at different moments.
+  </aside>
+  </section>
+
+  <section>
   <div class="layers" style="max-width:82%">
   <img src="images/fig-art-science-base.svg" alt="A horizontal axis from artistic practice through artistic research and scientific research to professional practice, with design and engineering above">
   <img class="fragment" src="images/fig-art-science-outputs.svg" alt="Arrows from each position to its outputs: artwork, reflection, build, code, data, publications, product">
@@ -732,41 +898,47 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </aside>
   </section>
 
-  <section>
-  <h2>Ten definitions of noise</h2>
-  <div class="cols3" style="margin-top:.6em">
-  <div class="card green"><h3>Randomness</h3><p>the mathematician</p></div>
-  <div class="card purple"><h3>A fluctuation</h3><p>the physicist</p></div>
-  <div class="card blue"><h3>The unwanted part</h3><p>signal processing</p></div>
-  </div>
-  <div class="cols3" style="margin-top:.6em">
-  <div class="card pink"><h3>Material</h3><p>the sound artist</p></div>
-  <div class="card yellow"><h3>Disturbance</h3><p>the philosopher</p></div>
-  <div class="card green"><h3>The signal</h3><p>whoever is recording ventilation this summer</p></div>
-  </div>
-  <aside class="notes">
-  And it changes with what you are doing. I spent a summer recording ventilation systems for a project, so for me the ventilation was the signal, not the noise.
-  The lesson: do not resolve the disagreement too early. The friction is the content.
-  At a MishMash workshop, ten people from different backgrounds each gave a ten-minute talk on one word: noise. Ten definitions, no agreement, and a very good discussion — that is what multidisciplinary looks like in practice.
-    Intra, cross, multi, inter, trans — a centre needs all of them at different moments, and the distinction matters. Do you work interdisciplinary, or are you interdisciplinary? Most so-called interdisciplinary projects are cross-disciplinary: everyone stays comfortable in their own discipline and contributes a piece. The real thing starts when the terminology breaks down and people step on each other’s toes. It is painful, and it is where the new things come from. (Jensenius, Sound Actions, MIT Press 2022.)
-  </aside>
-  </section>
-
-  <section>
+    <section>
   <h2>How it is run</h2>
-  <div class="cols3">
-  <div class="card green"><h3>Management</h3><p>Day-to-day coordination of the centre's activities.</p></div>
-  <div class="card purple"><h3>Work package leader group</h3><p>Leads and two "sidekicks" for each of the seven WPs.</p></div>
-  <div class="card blue"><h3>Board</h3><p>Governance and strategic decisions.</p></div>
+  <div class="org">
+  <div class="org-box pink">Council</div>
+  <div class="org-dash"></div>
+  <div class="org-box green">Board</div>
+  <div class="org-dash"></div>
+  <div class="org-box pink">Scientific<br>advisory board</div>
+
+  <div></div><div></div><div class="org-stem"></div><div></div><div></div>
+
+  <div></div>
+  <div></div>
+  <div class="org-box purple">Management</div>
+  <div class="org-dash"></div>
+  <div class="org-box pink">Stakeholder<br>board</div>
+
+  <div></div><div></div><div class="org-stem"></div><div></div><div></div>
+
+  <div></div><div></div>
+  <div class="org-box blue">WP leader group</div>
+  <div></div><div></div>
+
+  <div></div><div></div><div class="org-stem"></div><div></div><div></div>
+
+  <div class="org-wps">
+  <div class="org-box wp">WP1</div>
+  <div class="org-box wp">WP2</div>
+  <div class="org-box wp">WP3</div>
+  <div class="org-box wp">WP4</div>
+  <div class="org-box wp">WP5</div>
+  <div class="org-box wp">WP6</div>
+  <div class="org-box wp">WP7</div>
   </div>
-  <div class="cols3" style="margin-top:.6em">
-  <div class="card pink"><h3>Council</h3><p>Strategic oversight and partner compliance.</p></div>
-  <div class="card yellow"><h3>Scientific advisory board</h3><p>International scientific guidance and evaluation.</p></div>
-  <div class="card green"><h3>Stakeholder board</h3><p>Representatives from partner organisations.</p></div>
   </div>
   <p class="caption arrow">mishmash.no/about/organisation/</p>
   <aside class="notes">
-  Deliberately distributed governance: no single institution controls the centre, and the boards are drawn from across the consortium and from abroad.
+  Solid lines are lines of responsibility; dashed ones advise.
+  The Board governs and takes the strategic decisions — it is chaired from outside the host institution. The Council gives strategic oversight and holds the partners to their commitments. The Scientific Advisory Board is international, and evaluates. The Stakeholder Board speaks for the partner organisations.
+  Management does the day-to-day coordination. The Work Package Leader Group is the scientific engine: each of the seven work packages has a lead and two sidekicks, deliberately from three different institutions, so collaboration is built into the structure rather than hoped for.
+  The point of drawing it this way: no single institution controls the centre.
   </aside>
   </section>
 
@@ -782,21 +954,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <section>
   <div class="wide-left">
   <div class="mapwrap">
-  <svg viewBox="-132 -14 724 754" role="img" aria-label="Map of Norway with MishMash partner cities marked">
-  <image href="images/mm-norway-map.png" x="0" y="0" width="579" height="720"></image>
-  <!-- Dot positions computed from each city's lon/lat against this outline.
-  data-city keys match the LOCAL table at the foot of this file; the one
-  named by ?place= is drawn in red. Default: none highlighted.
-  West-coast labels are right-anchored, which is why the viewBox has a
-  left margin. -->
-  <g data-city="tromso"><circle class="city" cx="325" cy="84"  r="7"/><text x="347" y="92">Tromsø</text></g>
-  <g data-city="bodo"><circle class="city" cx="223" cy="213" r="7"/><text x="245" y="221">Bodø</text></g>
-  <g data-city="trondheim"><circle class="city" cx="133" cy="423" r="7"/><text x="155" y="431">Trondheim</text></g>
-  <g data-city="bergen"><circle class="city" cx="18"  cy="588" r="7"/><text x="2"   y="596" text-anchor="end">Bergen</text></g>
-  <g data-city="stavanger"><circle class="city" cx="28" cy="667" r="7"/><text x="12" y="675" text-anchor="end">Stavanger</text></g>
-  <g data-city="oslo"><circle class="city" cx="141" cy="614" r="7"/><text x="163" y="622">Oslo</text></g>
-  <g data-city="kristiansand"><circle class="city" cx="79" cy="705" r="7"/><text x="97" y="724">Kristiansand</text></g>
-  </svg>
+  <img src="images/mm-norway-map.png" alt="Map of Norway">
   </div>
   <div>
   <h2 style="font-size:1.6em">All over the country</h2>
@@ -810,36 +968,25 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section id="local-slide">
-  <h2 id="local-heading">Wherever you are, a partner is close</h2>
-  <div class="cols mid">
-  <div>
-  <p class="lead" id="local-lead">Nearly every Norwegian university and arts academy.</p>
-  <ul style="font-size:.7em;margin-top:.6em" id="local-points">
-  <li>Each WP: one lead institution, two <em>sidekicks</em> elsewhere</li>
-  <li>Open to partner institutions <em>and</em> the unaffiliated</li>
-  <li>Seed funding for projects that cross partners</li>
-  </ul>
-  </div>
   <div id="local-visual">
   <img src="images/mm-institutions-network.jpg" alt="The MishMash network of institutions">
   <p class="caption arrow">mishmash.no/institutions/</p>
   </div>
-  </div>
   <aside class="notes" id="local-notes">
-  The local slot. Run the deck with ?place=uia (or another key from the LOCAL table in index.html) to swap in the host institution, its people and its work packages, and to highlight the city on the previous map.
-  Without ?place, this stays the generic national picture.
+  The local slot. Run the deck with ?place=uia (or another key from the LOCAL table in index.html) to put the host institution's people on the slide instead.
+  Without ?place, this stays the generic national picture: the institution network from mishmash.no.
   </aside>
   </section>
 
   <section>
   <h2>Mostly virtual, regularly physical</h2>
   <div class="cols">
-  <div class="card green"><h3>Every week</h3><p><strong>MeshUp</strong> — online, Thursdays 12:00–12:30. A short talk and a discussion. Open to everyone.</p></div>
-  <div class="card purple"><h3>Every other week</h3><p>Work package check-ins.</p></div>
+  <div class="card green fragment"><h3>Every week</h3><p><strong>MeshUp</strong> — online, Thursdays 12:00–12:30. A short talk and a discussion. Open to everyone.</p></div>
+  <div class="card purple fragment"><h3>Every other week</h3><p>Work package check-ins.</p></div>
   </div>
   <div class="cols" style="margin-top:.7em">
-  <div class="card blue"><h3>Every month</h3><p>Thematic seminars and public workshops.</p></div>
-  <div class="card pink"><h3>Twice a year</h3><p>Conferences and symposia, touring Norway — talks, performances and exhibitions in one programme.</p></div>
+  <div class="card blue fragment"><h3>Every month</h3><p>Thematic seminars and public workshops.</p></div>
+  <div class="card pink fragment"><h3>Twice a year</h3><p>Conferences and symposia, touring Norway — talks, performances and exhibitions in one programme.</p></div>
   </div>
   <aside class="notes">
   The MeshUp is the heartbeat: fifteen minutes of talk, ten of questions, every Thursday at noon, open to anyone. No registration.
@@ -848,16 +995,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </aside>
   </section>
 
-  <section>
-  <h2>Seven international partners</h2>
-  <p class="caption arrow">mishmash.no/institutions/</p>
-  <aside class="notes">
-  Worth being precise about this if anyone asks about joining from abroad: partnership is open, funding largely is not.
-  Norwegian in its funding and its obligations, international in its collaborations. International partners can join seed-funded projects provided there is a solid Norwegian collaboration; the centre primarily supports research activity in Norway.
-  </aside>
   </section>
-
-</section>
 
 <!-- ================== WHEN ================== -->
 <section>   <!-- RIGHT skips to the next question, DOWN works through this one -->
@@ -869,10 +1007,10 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <section>
   <h2>A five-year centre</h2>
   <div class="timeline">
-  <div><b>Dec 2025</b>Formal start. Funded by the Research Council of Norway as one of Norway's national AI centres.</div>
-  <div><b>Spring 2026</b>Recruitment of doctoral and postdoctoral fellows across the consortium.</div>
-  <div><b>Autumn 2026</b>Up to full speed. 35 PhDs and postdocs starting.</div>
-  <div><b>→ 2030</b>Five years of work, then the centre hands its results to the institutions.</div>
+  <div class="fragment"><b>Dec 2025</b>Formal start. Funded by the Research Council of Norway as one of Norway's national AI centres.</div>
+  <div class="fragment"><b>Spring 2026</b>Recruitment of doctoral and postdoctoral fellows across the consortium.</div>
+  <div class="fragment"><b>Autumn 2026</b>Up to full speed. 35 PhDs and postdocs starting.</div>
+  <div class="fragment"><b>→ 2030</b>Five years of work, then the centre hands its results to the institutions.</div>
   </div>
   <aside class="notes">
   In principle a five-year centre. That is why the website is built as a hub pointing at the partner institutions rather than a large archive of its own — when the centre ends, the institutions keep the work.
@@ -897,14 +1035,17 @@ MishMash is one of the national AI research centres funded by the Research Counc
 
   <section>
   <h2>What is coming</h2>
-  <div class="cols3">
-  <div class="card purple"><h3>35 new fellows</h3><p>PhDs and postdocs starting across the consortium, in every work package.</p></div>
-  <div class="card green"><h3>Seed funding</h3><p>Announced internally on a regular basis, for smaller cross-partner initiatives.</p></div>
-  <div class="card blue"><h3>Two conferences a year</h3><p>Touring Norway, with performances and exhibitions alongside the talks.</p></div>
-  </div>
-  <p class="caption arrow">mishmash.no/events/ &middot; mishmash.no/projects/</p>
+  <dl class="defs agenda">
+  <div><dt>Today</dt><dd>MishMash Opening Conference &middot; <strong>Kristiansand</strong></dd></div>
+  <div><dt>22 Sep 2026</dt><dd>Human-Centered AI &middot; Forskningsparken, Oslo</dd></div>
+  <div><dt>Thursdays</dt><dd>MeshUp, online, 12:00&ndash;12:30 &middot; open to everyone</dd></div>
+  <div><dt>13&ndash;14 Apr 2027</dt><dd>AR@K27, 9th Annual Artistic Research Conference &middot; Kristiania, Oslo</dd></div>
+  </dl>
+  <p class="caption arrow">mishmash.no/events/</p>
   <aside class="notes">
-  If you want to know what is actually happening, the events page and the projects page are the two live ones. Both update automatically from partner sources.
+  Taken from the events page, which builds itself from the partners' own calendars — so it is worth checking rather than trusting this slide.
+  Today is the opening conference. Next week, Human-Centered AI at Forskningsparken. The MeshUp runs every Thursday at noon and needs no registration. And in April, the artistic research conference at Kristiania.
+  Two conferences a year, touring Norway, with performances and exhibitions alongside the talks. Alongside that: 35 PhDs and postdocs starting across the consortium, and seed funding announced internally on a regular basis for smaller cross-partner initiatives.
   </aside>
   </section>
 
@@ -1019,14 +1160,6 @@ MishMash is one of the national AI research centres funded by the Research Counc
   --------------------------------------------------------------------*/
   var LOCAL = {
     uia: {
-      city: 'kristiansand',
-      heading: 'MishMash in Kristiansand',
-      lead: 'The <strong>University of Agder</strong> is a MishMash partner.',
-      points: [
-        '<strong>Sunniva Whittaker</strong> — UiA rector, chairs the board',
-        '<strong>Eirik Sørbø</strong> — leads <strong>WP4</strong>, AI in education',
-        'Researchers in music, theology, engineering, media'
-      ],
       people: [
         { img: 'images/portraits/Sunniva_Whittaker_UiA.jpg', name: 'Sunniva Whittaker', role: 'board leader' },
         { img: 'images/portraits/eirik_sorbo_UiA.jpg', name: 'Eirik Sørbø', role: 'WP4 lead' }
@@ -1034,7 +1167,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
       notes: 'UiA is not a peripheral partner — the rector chairs the board, and WP4 on education is led from here. Name a few more people if you know who is in the room.'
     }
     /* Add more places here, e.g.
-       ntnu: { city: 'trondheim', heading: '…', lead: '…', points: […], people: […] }
+       ntnu: { people: [{ img: '…', name: '…', role: '…' }], notes: '…' }
     */
   };
 
@@ -1043,14 +1176,8 @@ MishMash is one of the national AI research centres funded by the Research Counc
     var p = LOCAL[key];
     if (!p) return;
 
-    if (p.heading) document.getElementById('local-heading').textContent = p.heading;
-    if (p.lead) document.getElementById('local-lead').innerHTML = p.lead;
     if (p.notes) document.getElementById('local-notes').textContent = p.notes;
 
-    if (p.points) {
-      document.getElementById('local-points').innerHTML =
-        p.points.map(function (t) { return '<li>' + t + '</li>'; }).join('');
-    }
 
     if (p.people && p.people.length) {
       document.getElementById('local-visual').outerHTML =
@@ -1061,15 +1188,6 @@ MishMash is one of the national AI research centres funded by the Research Counc
         }).join('') + '</div>';
     }
 
-    /* Highlight the city on the map slide. */
-    if (p.city) {
-      var g = document.querySelector('[data-city="' + p.city + '"]');
-      if (g) {
-        g.querySelector('circle').setAttribute('class', 'here');
-        g.querySelector('circle').setAttribute('r', '11');
-        g.querySelector('text').setAttribute('class', 'hilite');
-      }
-    }
   })();
 
   /* Each question's divider gives its whole stack an accent colour. The

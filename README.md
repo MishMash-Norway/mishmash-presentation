@@ -49,7 +49,7 @@ default and takes what is local to a given talk from the URL.
 | Parameter | Effect |
 | --- | --- |
 | `?venue=Kristiansand&date=15 September 2026` | Adds the occasion to the title slide |
-| `?place=uia` | Swaps the generic "where you are" slide for the host institution, and marks that city in red on the map |
+| `?place=uia` | Puts the host institution's people on the local slide instead of the generic institution network |
 | `?static=1` | Replaces the two live embeds with stills, for a room with no working network |
 
 Combine them freely: `index.html?place=uia&venue=Kristiansand`.
@@ -59,21 +59,9 @@ the foot of `index.html`:
 
 ```js
 ntnu: {
-  city: 'trondheim',                 // must match a data-city key on the map
-  heading: 'MishMash in Trondheim',
-  lead: 'NTNU is a MishMash partner …',
-  points: ['…', '…'],
   people: [{ img: 'images/portraits/…jpg', name: '…', role: '…' }],
   notes: 'Speaker notes for this version of the slide.'
 }
-```
-
-Adding a city to the map needs a dot as well. Positions come from longitude and
-latitude against the outline in `images/mm-norway-map.png`:
-
-```
-x = (lon - 4.5) * 22.4903
-y = (71.2 - lat) / 0.0183867
 ```
 
 ## Live content
