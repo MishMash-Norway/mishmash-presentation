@@ -88,6 +88,52 @@
   --slide-colour: var(--mm-green);
 }
 
+/* ---------- Dark mode ----------
+   The identity has no dark palette, so this inverts its two poles: ink becomes
+   the foreground, the page becomes ink. Every rule already speaks in tokens,
+   so swapping the two carries the whole deck.
+
+   The question pages are the exception. They are flat pastel surfaces that
+   want dark text in either mode, so they simply re-declare the light tokens
+   for themselves — custom properties inherit, and everything inside reverts. */
+
+html.dark {
+  --mm-ink: #f2f0f0;
+  --mm-white: #231f20;
+  --mm-ink-70: #b9b4b5;
+  --mm-ink-40: #6d6869;
+  --mm-ink-15: #3a3536;
+  --mm-ink-5: #2b2627;
+  /* the tints, mixed onto ink instead of onto white */
+  --mm-green-tint: #232f1e;
+  --mm-purple-tint: #26232f;
+  --mm-blue-tint: #1e2831;
+  --mm-pink-tint: #2f2325;
+  --mm-yellow-tint: #2b2c1c;
+  --r-background-color: #231f20;
+  color-scheme: dark;
+}
+html.dark body,
+html.dark .reveal-viewport { background: #231f20; }
+
+html.dark .reveal .slides section[data-background-color] {
+  --mm-ink: #231f20;
+  --mm-white: #ffffff;
+  --mm-ink-70: #5c5859;
+  --mm-ink-40: #a7a4a5;
+  --mm-ink-15: #dedcdc;
+}
+
+/* Line drawings are black on white; photographs and screenshots are not. */
+html.dark .reveal img.fig { filter: invert(0.93) hue-rotate(180deg); }
+
+/* The disciplinarity figure is inline SVG with black and white baked into the
+   attributes, so a filter cannot reach it. CSS beats presentation attributes. */
+html.dark .disc svg circle { fill: var(--mm-white); stroke: var(--mm-ink); }
+html.dark .disc svg text   { fill: var(--mm-ink); }
+html.dark .disc svg path   { stroke: var(--mm-ink); }
+html.dark .disc svg polygon { fill: var(--mm-ink); }
+
 /* ---------- Type ---------- */
 
 .reveal { font-family: var(--mm-font-body); color: var(--mm-ink); }
@@ -476,7 +522,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <p class="huge">mish&middot;mash</p>
   <p class="lead"><em>noun</em> — a confused mixture.</p>
   </div>
-  <img src="images/mm-bubbles.svg" alt="The MishMash bubbles emblem">
+  <img class="fig" src="images/mm-bubbles.svg" alt="The MishMash bubbles emblem">
   </div>
   <aside class="notes">
   People always ask about the name. It is not an acronym. It describes the deliberate mix of artistic and scientific disciplines — and the fact that we are merging them into something new.
@@ -486,7 +532,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section class="center">
-  <img src="images/mm-humans-machines-separate.png" alt="Two separate circles, humans and machines" style="max-height:72vh;display:block;margin:0 auto">
+  <img class="fig" src="images/mm-humans-machines-separate.png" alt="Two separate circles, humans and machines" style="max-height:72vh;display:block;margin:0 auto">
   <aside class="notes">
   Two circles, apart. Most attention goes to what the machines can do — benchmarks, capabilities, model releases. That is one circle.
   People get discussed as users, or as the ones being replaced. That is the other.
@@ -494,7 +540,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section class="center">
-  <img src="images/mm-humans-machines-animate.gif" alt="The two circles move together until they overlap" style="max-height:72vh;display:block;margin:0 auto">
+  <img class="fig" src="images/mm-humans-machines-animate.gif" alt="The two circles move together until they overlap" style="max-height:72vh;display:block;margin:0 auto">
   <aside class="notes">
   And together. All technology, AI included, is made by people and for people, so the interesting things happen where the circles overlap.
   That is where MishMash lives: the meeting point between human and machine, and between art and science.
@@ -595,10 +641,10 @@ MishMash is one of the national AI research centres funded by the Research Counc
 
   <section>
   <div class="layers" style="max-width:68%">
-  <img src="images/mm-cube-notext.svg" alt="An empty cube: seven horizontal slices, three columns on the top face, three on the side">
-  <img class="fragment" src="images/mm-cube-layer-wps.svg" alt="The front face labelled with the seven work packages">
-  <img class="fragment" src="images/mm-cube-layer-approaches.svg" alt="The top face labelled create, explore and reflect">
-  <img class="fragment" src="images/mm-cube-layer-perspectives.svg" alt="The side face labelled machines, humans and society">
+  <img class="fig" src="images/mm-cube-notext.svg" alt="An empty cube: seven horizontal slices, three columns on the top face, three on the side">
+  <img class="fig fragment" src="images/mm-cube-layer-wps.svg" alt="The front face labelled with the seven work packages">
+  <img class="fig fragment" src="images/mm-cube-layer-approaches.svg" alt="The top face labelled create, explore and reflect">
+  <img class="fig fragment" src="images/mm-cube-layer-perspectives.svg" alt="The side face labelled machines, humans and society">
   </div>
   <aside class="notes">
   To explain how a collaboration this large works, we made a cube. Start with it empty and add one face at a time.
@@ -886,9 +932,9 @@ MishMash is one of the national AI research centres funded by the Research Counc
 
   <section>
   <div class="layers" style="max-width:82%">
-  <img src="images/fig-art-science-base.svg" alt="A horizontal axis from artistic practice through artistic research and scientific research to professional practice, with design and engineering above">
-  <img class="fragment" src="images/fig-art-science-outputs.svg" alt="Arrows from each position to its outputs: artwork, reflection, build, code, data, publications, product">
-  <img class="fragment" src="images/fig-art-science-regions.svg" alt="Regions: practice at either end, one shared research region in the middle, design and engineering their own">
+  <img class="fig" src="images/fig-art-science-base.svg" alt="A horizontal axis from artistic practice through artistic research and scientific research to professional practice, with design and engineering above">
+  <img class="fig fragment" src="images/fig-art-science-outputs.svg" alt="Arrows from each position to its outputs: artwork, reflection, build, code, data, publications, product">
+  <img class="fig fragment" src="images/fig-art-science-regions.svg" alt="Regions: practice at either end, one shared research region in the middle, design and engineering their own">
   </div>
   <aside class="notes">
   A map for when artists and scientists talk past each other. The horizontal axis runs from artistic practice, through artistic research and scientific research, to professional practice. Design and engineering pull upwards, out of both.
@@ -953,7 +999,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <section>
   <div class="wide-left">
   <div class="mapwrap">
-  <img src="images/mm-norway-map.png" alt="Map of Norway">
+  <img class="fig" src="images/mm-norway-map.png" alt="Map of Norway">
   </div>
   <div>
   <h2 style="font-size:1.6em">All over the country</h2>
@@ -968,7 +1014,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
 
   <section id="local-slide">
   <div id="local-visual">
-  <img src="images/mm-institutions-network.jpg" alt="The MishMash network of institutions">
+  <img class="fig" src="images/mm-institutions-network.jpg" alt="The MishMash network of institutions">
   <p class="caption arrow">mishmash.no/institutions/</p>
   </div>
   <aside class="notes" id="local-notes">
@@ -1230,7 +1276,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
     var netSlide = document.querySelector('.netwrap');
     if (netSlide) {
       netSlide.outerHTML =
-        '<img src="images/mm-institutions-network.jpg" alt="The MishMash network of institutions" ' +
+        '<img class="fig" src="images/mm-institutions-network.jpg" alt="The MishMash network of institutions" ' +
         'style="max-height:66vh;margin:0 auto;display:block;border:2px solid var(--mm-ink)">';
     }
     var vid = document.querySelector('.embed');
@@ -1255,6 +1301,22 @@ MishMash is one of the national AI research centres funded by the Research Counc
     preloadIframes: true,
     plugins: [RevealNotes]
   });
+
+  /* ---- Dark mode -----------------------------------------------------
+     D toggles it, and the choice is remembered. It starts light whatever
+     the machine prefers: a talk is nearly always projected, and a deck
+     that goes dark because the laptop is in dark mode is a surprise
+     nobody wants in front of a room.
+  --------------------------------------------------------------------*/
+  function setDark(on) {
+    document.documentElement.classList.toggle('dark', on);
+    try { localStorage.setItem('mishmash-deck-dark', on ? '1' : '0'); } catch (e) {}
+  }
+  try { setDark(localStorage.getItem('mishmash-deck-dark') === '1'); } catch (e) {}
+  Reveal.addKeyBinding(
+    { keyCode: 68, key: 'D', description: 'Toggle dark mode' },
+    function () { setDark(!document.documentElement.classList.contains('dark')); }
+  );
 
   Reveal.on('ready', showPosition);
   Reveal.on('slidechanged', showPosition);

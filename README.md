@@ -26,7 +26,25 @@ The readout in the top right names the question and how far down it you are
 ("What? 3/9"). Press **Esc** for the overview — one column per question.
 
 Every slide has speaker notes, and they carry the sentences that are
-deliberately not on the screen. Press **S** for the speaker view.
+deliberately not on the screen. Press **S** for the speaker view, **D** for
+dark mode, and **Esc** for the overview.
+
+## Dark mode
+
+**D** toggles it, and the choice is remembered. It always starts light,
+whatever the machine prefers — a talk is nearly always projected, and a deck
+that goes dark because the laptop is in dark mode is a surprise nobody wants
+in front of a room.
+
+The identity has no dark palette, so dark mode inverts its two poles: ink
+becomes the foreground and the page becomes ink. Every rule in the stylesheet
+speaks in tokens, so swapping the two carries the whole deck. The question
+pages are the exception: they are flat pastel surfaces that want dark text
+either way, so they re-declare the light tokens for themselves and look the
+same in both modes.
+
+Line drawings are marked `class="fig"` and inverted; photographs, screenshots
+and portraits are not.
 
 ## Structure
 
