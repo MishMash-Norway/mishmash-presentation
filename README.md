@@ -2,7 +2,7 @@
 
 A generic introduction to MishMash Centre for AI and Creativity. One deck that scales from a three-minute pitch to a thirty-minute talk, built with [reveal.js](https://revealjs.com) and styled in the 2026 MishMash visual identity.
 
-You can view the presentation at [here](https://mishmash-norway.github.io/mishmash-presentation/), or from the local `index.html` if you download this repo to your own computer.
+You can view the presentation [here](https://mishmash-norway.github.io/mishmash-presentation/), or from the local `index.html` if you download this repo to your own computer.
 
 ## Organisation
 
