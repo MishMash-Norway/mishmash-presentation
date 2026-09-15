@@ -227,6 +227,44 @@
 .split h3 { font-size: 1.3em; }
 .split ul { margin: 0 0 0 0.9em; }
 
+/* A figure built up in layers: the first image sets the size, the others sit
+   exactly on top of it and arrive as fragments. */
+.layers { position: relative; margin: 0 auto; }
+.reveal .layers img { display: block; width: 100%; height: auto; max-height: none; margin: 0; }
+.reveal .layers img + img { position: absolute; left: 0; top: 0; }
+
+/* A quotation: a bar in the section's colour rather than quotation marks. */
+.quote {
+  font-size: 1.12em;
+  font-style: italic;
+  line-height: 1.38;
+  border-left: 10px solid var(--slide-colour);
+  padding-left: 0.65em;
+  margin: 0.2em 0;
+  max-width: 24em;
+}
+
+/* The objective in one sentence: the three verbs and the three prepositions
+   stand as vertical columns inside the line, so all nine readings are on the
+   slide at once. Carried over from the DScience deck; the old palette's purple
+   and green text is a highlight behind ink text here instead. */
+.sentence {
+  font-family: var(--mm-font-display);
+  font-size: 1.62em;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.sentence .wordstack {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+  vertical-align: middle;
+  line-height: 1.05;
+  margin: 0 0.22em;
+  text-align: center;
+}
+.sentence .wordstack .hl { display: block; padding: 0.05em 0.3em; }
+
 /* Highlight behind ink text. The pastels have too little contrast to be a text
    colour (BRAND.md), but they are made for exactly this. */
 .hl {
@@ -465,13 +503,25 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section>
-  <p class="huge" style="font-size:2em">MishMash will<br>
-  <span class="hl green">create</span>, <span class="hl green">explore</span> and <span class="hl green">reflect on</span> AI<br>
-  <span class="hl purple">for</span>, <span class="hl purple">through</span> and <span class="hl purple">in</span> creative practices.</p>
+  <p class="sentence">MishMash will
+  <span class="wordstack"><span class="hl green fragment" data-fragment-index="1">create</span><span class="hl green fragment" data-fragment-index="1">explore</span><span class="hl green fragment" data-fragment-index="1">reflect</span></span>
+  on AI
+  <span class="wordstack"><span class="hl purple fragment" data-fragment-index="2">for</span><span class="hl purple fragment" data-fragment-index="2">through</span><span class="hl purple fragment" data-fragment-index="2">in</span></span>
+  creative practices.</p>
   <aside class="notes">
   The whole centre in one sentence. Three verbs and three prepositions, and the prepositions matter.
   Create: build systems, tools, artworks, frameworks and policies. Explore: use AI in creative practice, and take creative methods into other domains. Reflect: study the impacts critically.
   AI for creative practices, AI through creative practices, AI in creative practices.
+  </aside>
+  </section>
+
+  <section>
+  <h2>The research question</h2>
+  <p class="quote">What are the possibilities, limitations, and transformative effects of AI on creative practices, and how can we develop CoCreative AI systems that complement human creativity while addressing ethical, cultural, and societal implications?</p>
+  <aside class="notes">
+  One question, from the centre application, and the wording on mishmash.no.
+  The first half is descriptive — what AI does to creative practice. The second half is constructive — what we should build instead. And the last clause is why the centre needs the humanities and law as much as it needs engineering.
+  The three perspectives — machines, humans, society — are how we cut it.
   </aside>
   </section>
 
@@ -740,6 +790,20 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <aside class="notes">
   Do you work interdisciplinary, or are you interdisciplinary? Most so-called interdisciplinary projects are cross-disciplinary: everyone stays comfortable in their own discipline and contributes a piece.
   The real thing starts when the terminology breaks down and people step on each other's toes. It is painful, and it is where the new things come from.
+  </aside>
+  </section>
+
+  <section>
+  <h2>Artistic and scientific research</h2>
+  <div class="layers" style="max-width:82%">
+  <img src="images/fig-art-science-base.svg" alt="A horizontal axis from artistic practice through artistic research and scientific research to professional practice, with design and engineering above">
+  <img class="fragment" src="images/fig-art-science-outputs.svg" alt="Arrows from each position to its outputs: artwork, reflection, build, code, data, publications, product">
+  <img class="fragment" src="images/fig-art-science-regions.svg" alt="Regions: practice at either end, one shared research region in the middle, design and engineering their own">
+  </div>
+  <aside class="notes">
+  A map for when artists and scientists talk past each other. The horizontal axis runs from artistic practice, through artistic research and scientific research, to professional practice. Design and engineering pull upwards, out of both.
+  First click: what each of them produces. Practice makes artworks or products. Research, artistic or scientific, produces the things in the middle — reflection, builds, code, data, publications. The overlap is large, and that is the point.
+  Second click: where the boundaries sit. Practice at the ends is its own thing; the research in the middle is one shared region; design and engineering are a region of their own. Knowledge-making and art-making go hand in hand.
   </aside>
   </section>
 
