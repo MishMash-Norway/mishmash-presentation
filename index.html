@@ -315,6 +315,22 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
   background: var(--mm-ink);
 }
 
+/* The bubbles: pastels stay put in both modes, while the intersection and the
+   labels are tokens, so they invert with everything else. */
+.bubbles { width: 56%; margin: 0 auto; }
+.bubbles svg { display: block; width: 100%; height: auto; max-height: 72vh; }
+.bubbles .c-humans   { fill: var(--mm-purple); stroke: var(--mm-ink-40); stroke-width: 1; }
+.bubbles .c-machines { fill: var(--mm-green);  stroke: var(--mm-ink-40); stroke-width: 1; }
+.bubbles .c-lens     { fill: var(--mm-ink); }
+.bubbles .lbl {
+  font-family: var(--mm-font-body); font-size: 19px;
+  fill: var(--mm-ink); text-anchor: middle;
+}
+.bubbles .lbl.lens { fill: var(--mm-white); }
+/* These two sit on the pastels, which are light surfaces in either mode, so
+   they keep ink rather than following the page. */
+.bubbles .lbl.on-surface { fill: #231f20; }
+
 /* The disciplinarity figure is inlined rather than linked, so that each of the
    five bubbles can be a fragment of its own. */
 .disc { width: 88%; margin: 0 auto; }
@@ -392,8 +408,6 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 .mapwrap img { width: 100%; height: auto; max-height: 76vh; display: block; }
 
 /* Embeds */
-.embed { width: 1600px; height: 900px; border: 2px solid var(--mm-ink); margin: 0 auto; overflow: hidden; }
-.embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 .netwrap { width: 1700px; height: 730px; border: 2px solid var(--mm-ink); margin: 0 auto; overflow: hidden; }
 .netwrap iframe { width: 1700px; max-width: none; height: 1450px; max-height: none; margin-top: -438px; border: 0; display: block; }
 
@@ -516,22 +530,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </aside>
   </section>
 
-  <section>
-  <div class="wide-left">
-  <div>
-  <p class="huge">mish&middot;mash</p>
-  <p class="lead"><em>noun</em> — a confused mixture.</p>
-  </div>
-  <img class="fig" src="images/mm-bubbles.svg" alt="The MishMash bubbles emblem">
-  </div>
-  <aside class="notes">
-  People always ask about the name. It is not an acronym. It describes the deliberate mix of artistic and scientific disciplines — and the fact that we are merging them into something new.
-  The full story is on arj.no and in the FAQ on mishmash.no.
-  Not an acronym. It began as a working title describing how the founders saw the group that had assembled. Among more than 150 centre proposals pitched to the Research Council in 2024, it was one of the few names people remembered. So it stuck.
-  </aside>
-  </section>
-
-  <section class="center">
+    <section class="center">
   <img class="fig" src="images/mm-humans-machines-separate.png" alt="Two separate circles, humans and machines" style="max-height:72vh;display:block;margin:0 auto">
   <aside class="notes">
   Two circles, apart. Most attention goes to what the machines can do — benchmarks, capabilities, model releases. That is one circle.
@@ -544,6 +543,40 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <aside class="notes">
   And together. All technology, AI included, is made by people and for people, so the interesting things happen where the circles overlap.
   That is where MishMash lives: the meeting point between human and machine, and between art and science.
+  </aside>
+  </section>
+
+  <section class="center">
+  <!-- Inlined so the labels and the lens can follow the palette: the two
+       pastels are fixed, but the intersection and the text swap with the
+       mode. Source: mishmash-web, assets/images/bubbles/mishmash_bubbles.svg -->
+  <div class="bubbles">
+  <svg viewBox="0 0 420 320" role="img" aria-label="Humans and machines overlap, science above and art below, with MishMash where they meet">
+  <defs><clipPath id="bubble-clip" clipPathUnits="userSpaceOnUse"><circle cx="150" cy="160" r="110"/></clipPath></defs>
+  <circle class="c-humans"   cx="150" cy="160" r="110"/>
+  <circle class="c-machines" cx="270" cy="160" r="110"/>
+  <circle class="c-lens"     cx="270" cy="160" r="110" clip-path="url(#bubble-clip)"/>
+  <text class="lbl" x="210" y="35">Science</text>
+  <text class="lbl" x="210" y="305">Art</text>
+  <text class="lbl on-surface" x="90"  y="165">Humans</text>
+  <text class="lbl on-surface" x="330" y="165">Machines</text>
+  <text class="lbl lens" x="210" y="165">MishMash</text>
+  </svg>
+  </div>
+  <aside class="notes">
+  And there it is. Humans and machines overlap; science and art overlap; MishMash is where they meet.
+  It is the centre's own emblem, and worth reading as an argument rather than a decoration: we are not the study of machines, and not the study of art. We are what happens in the intersection.
+  </aside>
+  </section>
+
+  <section>
+    <div>
+  <p class="huge">mish&middot;mash</p>
+  <p class="lead"><em>noun</em> — a confused mixture.</p>
+    <aside class="notes">
+  People always ask about the name. It is not an acronym. It describes the deliberate mix of artistic and scientific disciplines — and the fact that we are merging them into something new.
+  The full story is on arj.no and in the FAQ on mishmash.no.
+  Not an acronym. It began as a working title describing how the founders saw the group that had assembled. Among more than 150 centre proposals pitched to the Research Council in 2024, it was one of the few names people remembered. So it stuck.
   </aside>
   </section>
 
@@ -616,19 +649,7 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </aside>
   </section>
 
-      <section class="center">
-  <div class="embed">
-  <iframe data-src="https://www.youtube-nocookie.com/embed/h_6M-_ZPYpA?rel=0" title="Strings On-Line installation, NIME 2020" allowfullscreen></iframe>
-  </div>
-  <p class="caption center">Strings On-Line &middot; NIME 2020</p>
-  <aside class="notes">
-  Acoustic guitars with microcomputers, sensors and actuators, so generated sound radiates from a wooden body rather than a loudspeaker.
-  The input side is the point: the guitars sense people moving in the space, so the mapping from human action to sound is the design problem.
-  Every system most people have met is disembodied — you type, a file comes back. A body changes what a system can know, and what it can be held to.
-  </aside>
-  </section>
-
-</section>
+      </section>
 
 <!-- ================== HOW ================== -->
 <section>   <!-- RIGHT skips to the next question, DOWN works through this one -->
@@ -1278,12 +1299,6 @@ MishMash is one of the national AI research centres funded by the Research Counc
       netSlide.outerHTML =
         '<img class="fig" src="images/mm-institutions-network.jpg" alt="The MishMash network of institutions" ' +
         'style="max-height:66vh;margin:0 auto;display:block;border:2px solid var(--mm-ink)">';
-    }
-    var vid = document.querySelector('.embed');
-    if (vid) {
-      vid.outerHTML =
-        '<img src="images/self-playing-guitars.jpg" alt="The self-playing guitars installation" ' +
-        'style="max-height:62vh;margin:0 auto;display:block;border:2px solid var(--mm-ink)">';
     }
   }
 
