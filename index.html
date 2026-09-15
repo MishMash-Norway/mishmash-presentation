@@ -315,6 +315,28 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
   background: var(--mm-ink);
 }
 
+/* Create, explore, reflect as a cycle. Tokens throughout, so it inverts with
+   the deck; the pastel tints carry the node fills in either mode. */
+.cycle { width: 84%; margin: 0 auto; }
+.cycle svg { display: block; width: 100%; height: auto; max-height: 68vh; }
+.cycle .arc path {
+  fill: none; stroke: var(--mm-ink); stroke-width: 3.5;
+  marker-end: url(#cyc-arrow);
+}
+.cycle #cyc-arrow path { fill: var(--mm-ink); stroke: none; }
+.cycle .node circle { stroke: var(--mm-ink); stroke-width: 3; }
+.cycle .node.green  circle { fill: var(--mm-green-tint); }
+.cycle .node.purple circle { fill: var(--mm-purple-tint); }
+.cycle .node.blue   circle { fill: var(--mm-blue-tint); }
+.cycle .glyph {
+  fill: none; stroke: var(--mm-ink); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.cycle .lbl {
+  font-family: var(--mm-font-display); font-size: 26px;
+  fill: var(--mm-ink); text-anchor: middle; letter-spacing: 0.03em;
+}
+
 /* The bubbles: pastels stay put in both modes, while the intersection and the
    labels are tokens, so they invert with everything else. */
 .bubbles { width: 56%; margin: 0 auto; }
@@ -334,6 +356,14 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 /* The disciplinarity figure is inlined rather than linked, so that each of the
    five bubbles can be a fragment of its own. */
 .disc { width: 88%; margin: 0 auto; }
+/* The figure sets font-family: "Helvetica, Arial, sans-serif" — the whole
+   stack inside one pair of quotes, so it reads as a single family that does
+   not exist and falls back to a serif. Override it with the deck's own. */
+.disc svg text { font-family: var(--mm-font-display); font-weight: 700; }
+/* Reveal sets will-change: opacity on every fragment. On an SVG group that
+   promotes it to its own compositing layer, and Chrome then clips the text to
+   the layer's bounds — "disciplinary" was losing its first letters. */
+.disc svg .fragment { will-change: auto !important; }
 .disc svg { display: block; width: 100%; height: auto; max-height: 56vh; }
 
 /* A figure built up in layers: the first image sets the size, the others sit
@@ -396,7 +426,7 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 .defs dd { margin: 0; }
 
 /* Timeline */
-.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 0.6em; font-size: 0.62em; }
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 0; row-gap: 1.1em; margin-top: 0.6em; font-size: 0.62em; }
 .timeline div { border-top: 6px solid var(--mm-blue); padding: 0.6em 0.9em 0 0; }
 .timeline div:nth-child(2) { border-top-color: var(--mm-purple); }
 .timeline div:nth-child(3) { border-top-color: var(--mm-green); }
@@ -819,16 +849,56 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
     <section>
-  <h2>Who creates, who explores, who reflects</h2>
-  <div class="cols3">
-  <div class="card purple"><h3>Create</h3><p>Engineers and artists. They build the systems and make the work.</p></div>
-  <div class="card green"><h3>Explore</h3><p>Educators, clinicians, curators — the people who put the work in front of others.</p></div>
-  <div class="card blue"><h3>Reflect</h3><p>Scholars from sociology, philosophy and law. They ask what it means, and what changes.</p></div>
+  <div class="cycle">
+  <svg viewBox="0 0 900 600" role="img" aria-label="A cycle: create, then explore, then reflect, and back to create">
+  <defs>
+  <marker id="cyc-arrow" viewBox="0 0 10 10" refX="8" refY="5"
+          markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+  <path d="M0 0 L10 5 L0 10 z"/>
+  </marker>
+  </defs>
+
+  <g class="arc">
+  <path d="M544.5 149.5 A195 195 0 0 1 645.0 323.4"/>
+  <path d="M550.4 487.1 A195 195 0 0 1 349.6 487.1"/>
+  <path d="M255.0 323.4 A195 195 0 0 1 355.5 149.5"/>
+  </g>
+
+  <!-- Pictograms drawn in the house idiom: 24 x 24, stroked, round joins,
+       as in mishmash-web/scripts/build_icons.py. Scaled 1.9 and centred. -->
+  <g class="node green" transform="translate(450 125)">
+  <circle r="78"/>
+  <g class="glyph" transform="translate(-22.8 -45.6) scale(1.9)">
+  <path d="M4 20h4l10.5 -10.5a2.83 2.83 0 0 0 -4 -4l-10.5 10.5v4"/>
+  <path d="M13.5 6.5l4 4"/>
+  </g>
+  <text class="lbl" y="34">CREATE</text>
+  </g>
+
+  <g class="node purple" transform="translate(618.9 417.5)">
+  <circle r="78"/>
+  <g class="glyph" transform="translate(-22.8 -45.6) scale(1.9)">
+  <circle cx="12" cy="12" r="9"/>
+  <path d="M9 15l2.4 -5.6l5.6 -2.4l-2.4 5.6z"/>
+  </g>
+  <text class="lbl" y="34">EXPLORE</text>
+  </g>
+
+  <g class="node blue" transform="translate(281.1 417.5)">
+  <circle r="78"/>
+  <g class="glyph" transform="translate(-22.8 -45.6) scale(1.9)">
+  <path d="M4 18.5l1.1 -3.3a7.5 6.7 0 1 1 2.9 2.4z"/>
+  <path d="M10 9.6a2.1 2.1 0 1 1 2.6 2c-.7 .25 -.85 .8 -.85 1.4"/>
+  <path d="M11.75 15.4h.02"/>
+  </g>
+  <text class="lbl" y="34">REFLECT</text>
+  </g>
+  </svg>
   </div>
   <aside class="notes">
-  At RITMO we have had music researchers, psychologists and informatics people in the same building for nine years, sharing a coffee machine. That is what made the interdisciplinary work real rather than nominal.
-  MishMash is distributed, so we have to manufacture that proximity — which is what the weekly and biweekly rhythm is for.
-  Usually these three groups work at their own level, alone. Co-location is what changes that.
+  Three verbs, and three kinds of people. Create: engineers and artists build the systems and make the work. Explore: educators, clinicians and curators put that work in front of people. Reflect: scholars from sociology, philosophy and law ask what it means and what changes.
+  It is a cycle rather than a pipeline. What the reflecting turns up goes back into what gets built — that arrow round the bottom left is the one that usually does not exist.
+  Usually these three groups work at their own level, alone. Co-location is what changes that: at RITMO we have had music researchers, psychologists and informatics people in the same building for nine years, sharing a coffee machine, and that is what made the interdisciplinary work real rather than nominal. MishMash is distributed, so the rhythm has to manufacture that proximity.
   </aside>
   </section>
 
@@ -1045,7 +1115,6 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section>
-  <h2>Mostly virtual, regularly physical</h2>
   <div class="cols">
   <div class="card green fragment"><h3>Every week</h3><p><strong>MeshUp</strong> — online, Thursdays 12:00–12:30. A short talk and a discussion. Open to everyone.</p></div>
   <div class="card purple fragment"><h3>Every other week</h3><p>Work package check-ins.</p></div>
@@ -1073,6 +1142,10 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <section>
   <h2>A five-year centre</h2>
   <div class="timeline">
+  <div class="fragment"><b>Sep 2023</b>The government launches Norway’s national AI research initiative.</div>
+  <div class="fragment"><b>Jul 2024</b>First sketch of a centre on AI and creativity.</div>
+  <div class="fragment"><b>Jan 2025</b>Application to the Research Council.</div>
+  <div class="fragment"><b>Jun 2025</b>Awarded.</div>
   <div class="fragment"><b>Dec 2025</b>Formal start. Funded by the Research Council of Norway as one of Norway's national AI centres.</div>
   <div class="fragment"><b>Spring 2026</b>Recruitment of doctoral and postdoctoral fellows across the consortium.</div>
   <div class="fragment"><b>Autumn 2026</b>Up to full speed. 35 PhDs and postdocs starting.</div>
