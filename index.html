@@ -425,6 +425,50 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 .defs dt { font-family: var(--mm-font-display); font-size: 1.15em; letter-spacing: -0.01em; }
 .defs dd { margin: 0; }
 
+/* Gantt: a label column and six year columns. Bars are placed by grid-column,
+   so a whole year is the smallest unit — the point is the shape of the five
+   years, not the schedule. Redrawn from the centre's own chart, whose colours
+   are the superseded palette. */
+.gantt {
+  display: grid;
+  grid-template-columns: 13.5em repeat(6, 1fr);
+  align-items: center;
+  row-gap: 0.5em;
+  font-size: 0.62em;
+  position: relative;
+}
+.gantt::before {                       /* the year gridlines, behind the bars */
+  content: "";
+  position: absolute; top: 2.2em; bottom: 0;
+  left: 13.5em; right: 0;
+  background: repeating-linear-gradient(to right,
+      var(--mm-ink-15) 0 2px, transparent 2px calc(100% / 6));
+}
+.g-year {
+  font-family: var(--mm-font-display); font-size: 1.15em;
+  text-align: center; padding-bottom: 0.3em;
+  border-bottom: 2px solid var(--mm-ink);
+}
+.g-lbl {
+  grid-column: 1;              /* without this a label lands after the previous
+                                  bar instead of starting its own row */
+  padding-right: 1em; text-align: right;
+}
+.g-bar {
+  height: 1.5em; border: 2px solid var(--mm-ink); position: relative;
+  background: var(--mm-white);
+}
+.g-bar.green  { background: var(--mm-green-tint); }
+.g-bar.purple { background: var(--mm-purple-tint); }
+.g-bar.blue   { background: var(--mm-blue-tint); }
+.g-bar.pink   { background: var(--mm-pink-tint); }
+.g-bar.yellow { background: var(--mm-yellow-tint); }
+.g-marks { display: flex; justify-content: space-around; position: relative; }
+.g-marks span {
+  width: 0.85em; height: 0.85em; background: var(--mm-ink);
+  transform: rotate(45deg);
+}
+
 /* Timeline */
 .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 0; row-gap: 1.1em; margin-top: 0.6em; font-size: 0.62em; }
 .timeline div { border-top: 6px solid var(--mm-blue); padding: 0.6em 0.9em 0 0; }
@@ -1092,17 +1136,10 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section>
-  <div class="wide-left">
   <div class="mapwrap">
   <img class="fig" src="images/mm-norway-map.png" alt="Map of Norway">
   </div>
-  <div>
-  <h2 style="font-size:1.6em">All over the country</h2>
-  </div>
-  </div>
   <aside class="notes">
-  A selection of the partner cities — there are more. The important point is that this is genuinely national, not an Oslo project with guests.
-  If you are presenting in one of these cities, say so — or run the deck with ?place= to highlight it.
   Partners from Tromsø to Kristiansand: nearly every Norwegian university and arts academy, the research institutes, the National Library, museums, festivals and companies. No single campus — the centre is a hub that strengthens the institutions themselves.
   </aside>
   </section>
@@ -1159,6 +1196,42 @@ MishMash is one of the national AI research centres funded by the Research Counc
   In principle a five-year centre. That is why the website is built as a hub pointing at the partner institutions rather than a large archive of its own — when the centre ends, the institutions keep the work.
   And it is why this is a good moment to join: the agenda is still being set.
   Which means most of what MishMash will produce has not been produced yet. Now is the useful time to get involved.
+  </aside>
+  </section>
+
+  <section>
+  <h2>The five years</h2>
+  <div class="gantt">
+  <div></div>
+  <div class="g-year">2025</div><div class="g-year">2026</div><div class="g-year">2027</div>
+  <div class="g-year">2028</div><div class="g-year">2029</div><div class="g-year">2030</div>
+
+  <div class="g-lbl">Contracts and agreements</div>
+  <div class="g-bar pink" style="grid-column:2/4"></div>
+
+  <div class="g-lbl">Recruitment</div>
+  <div class="g-bar purple" style="grid-column:3/4"></div>
+
+  <div class="g-lbl">Work package activities</div>
+  <div class="g-bar green" style="grid-column:3/8"></div>
+
+  <div class="g-lbl">Education and training</div>
+  <div class="g-bar blue" style="grid-column:3/8"></div>
+
+  <div class="g-lbl">Communication</div>
+  <div class="g-bar yellow" style="grid-column:2/8"></div>
+
+  <div class="g-lbl">Conferences and symposia</div>
+  <div class="g-marks" style="grid-column:4/8"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <div class="g-lbl">PhD defences</div>
+  <div class="g-marks" style="grid-column:6/8"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <aside class="notes">
+  The same five years as the previous slide, seen as workstreams rather than milestones. Redrawn from the centre's Gantt chart.
+  Contracts and agreements are front-loaded, because 50-odd partners need paperwork before anything else can happen. Recruitment runs through 2026. The work package activities and the education strand then run to the end, and communication runs throughout — it starts before there is anything to communicate, which is deliberate.
+  The markers are the events: conferences and symposia twice a year from 2027, and the PhD defences bunching at the end, since fellows who start in the autumn of 2026 finish in 2029 and 2030.
+  Whole years rather than months: the point is the shape, not the schedule.
   </aside>
   </section>
 
