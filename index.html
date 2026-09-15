@@ -353,6 +353,24 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
    they keep ink rather than following the page. */
 .bubbles .lbl.on-surface { fill: #231f20; }
 
+/* The two circles apart, and moving together. Same viewBox and radius as the
+   bubbles, so the sequence keeps one size throughout and only the overlap
+   changes. Timing follows the GIF this replaces: about 1.8s of travel, then a
+   five-second hold. */
+.bubbles.apart .g-humans   { transform: translateX(-55px); }
+.bubbles.apart .g-machines { transform: translateX(55px); }
+@keyframes mm-join-left  { 0%, 6% { transform: translateX(-55px); } 28%, 100% { transform: translateX(0); } }
+@keyframes mm-join-right { 0%, 6% { transform: translateX(55px);  } 28%, 100% { transform: translateX(0); } }
+.bubbles.joining .g-humans   { animation: mm-join-left  6.8s cubic-bezier(.4, 0, .2, 1) infinite; }
+.bubbles.joining .g-machines { animation: mm-join-right 6.8s cubic-bezier(.4, 0, .2, 1) infinite; }
+@keyframes mm-join-lens { 0%, 24% { opacity: 0; } 34%, 100% { opacity: 1; } }
+.bubbles.joining .join-lens { animation: mm-join-lens 6.8s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .bubbles.joining .g-humans,
+  .bubbles.joining .g-machines,
+  .bubbles.joining .join-lens { animation: none; }
+}
+
 /* The disciplinarity figure is inlined rather than linked, so that each of the
    five bubbles can be a fragment of its own. */
 .disc { width: 88%; margin: 0 auto; }
@@ -581,8 +599,8 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <div>
   <h3>Threat</h3>
   <ul class="fragment">
-  <li>Models trained on artists' work without agreement</li>
-  <li>Falling income across the creative sector</li>
+  <li>Control slipping from maker to system</li>
+  <li>Training on artists’ work without agreement</li>
   <li>A narrower, more uniform culture</li>
   <li>Energy, water and hardware</li>
   </ul>
@@ -590,14 +608,15 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <div>
   <h3>Promise</h3>
   <ul class="fragment">
+  <li>Machines as partners, not just tools</li>
   <li>New instruments, new forms, new works</li>
   <li>Archives that can finally be searched</li>
-  <li>Tools in the hands of people without a studio</li>
   <li>Methods that travel out of the arts</li>
   </ul>
   </div>
   </div>
   <aside class="notes">
+  The pairs are taken from the centre application's seven challenges, each of which sets an opportunity against a constraint. Control is the one it repeats most — maintaining control, human agency, control and expression — and co-creation is its central positive claim: CoCreative AI, partnership rather than replacement.
   You can find good evidence for either column. The mistake is to treat the question as settled in either direction.
   Our job is to produce evidence about specific systems in specific uses, rather than opinions about AI in general.
   Most public arguments pick a side. A research centre has to hold both.
@@ -605,7 +624,12 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
     <section class="center">
-  <img class="fig" src="images/mm-humans-machines-separate.png" alt="Two separate circles, humans and machines" style="max-height:72vh;display:block;margin:0 auto">
+  <div class="bubbles apart">
+  <svg viewBox="0 0 460 320" role="img" aria-label="Two circles, humans and machines">
+  <g class="g-humans"><circle class="c-humans" cx="170" cy="160" r="110"/><text class="lbl on-surface" x="110" y="165">Humans</text></g>
+  <g class="g-machines"><circle class="c-machines" cx="290" cy="160" r="110"/><text class="lbl on-surface" x="350" y="165">Machines</text></g>
+  </svg>
+  </div>
   <aside class="notes">
   Two circles, apart. Most attention goes to what the machines can do — benchmarks, capabilities, model releases. That is one circle.
   People get discussed as users, or as the ones being replaced. That is the other.
@@ -613,7 +637,16 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section class="center">
-  <img class="fig" src="images/mm-humans-machines-animate.gif" alt="The two circles move together until they overlap" style="max-height:72vh;display:block;margin:0 auto">
+  <div class="bubbles joining">
+  <svg viewBox="0 0 460 320" role="img" aria-label="Two circles, humans and machines, moving together until they overlap">
+  <defs><clipPath id="join-clip" clipPathUnits="userSpaceOnUse"><circle cx="170" cy="160" r="110"/></clipPath></defs>
+  <g class="g-humans"><circle class="c-humans" cx="170" cy="160" r="110"/><text class="lbl on-surface" x="110" y="165">Humans</text></g>
+  <g class="g-machines"><circle class="c-machines" cx="290" cy="160" r="110"/><text class="lbl on-surface" x="350" y="165">Machines</text></g>
+  <!-- The intersection. Its geometry is the settled position, so it fades in
+       as the circles arrive rather than travelling with them. -->
+  <circle class="c-lens join-lens" cx="290" cy="160" r="110" clip-path="url(#join-clip)"/>
+  </svg>
+  </div>
   <aside class="notes">
   And together. All technology, AI included, is made by people and for people, so the interesting things happen where the circles overlap.
   That is where MishMash lives: the meeting point between human and machine, and between art and science.
@@ -625,16 +658,16 @@ MishMash is one of the national AI research centres funded by the Research Counc
        pastels are fixed, but the intersection and the text swap with the
        mode. Source: mishmash-web, assets/images/bubbles/mishmash_bubbles.svg -->
   <div class="bubbles">
-  <svg viewBox="0 0 420 320" role="img" aria-label="Humans and machines overlap, science above and art below, with MishMash where they meet">
-  <defs><clipPath id="bubble-clip" clipPathUnits="userSpaceOnUse"><circle cx="150" cy="160" r="110"/></clipPath></defs>
-  <circle class="c-humans"   cx="150" cy="160" r="110"/>
-  <circle class="c-machines" cx="270" cy="160" r="110"/>
-  <circle class="c-lens"     cx="270" cy="160" r="110" clip-path="url(#bubble-clip)"/>
-  <text class="lbl" x="210" y="35">Science</text>
-  <text class="lbl" x="210" y="305">Art</text>
-  <text class="lbl on-surface" x="90"  y="165">Humans</text>
-  <text class="lbl on-surface" x="330" y="165">Machines</text>
-  <text class="lbl lens" x="210" y="165">MishMash</text>
+  <svg viewBox="0 0 460 320" role="img" aria-label="Humans and machines overlap, science above and art below, with MishMash where they meet">
+  <defs><clipPath id="bubble-clip" clipPathUnits="userSpaceOnUse"><circle cx="170" cy="160" r="110"/></clipPath></defs>
+  <circle class="c-humans"   cx="170" cy="160" r="110"/>
+  <circle class="c-machines" cx="290" cy="160" r="110"/>
+  <circle class="c-lens"     cx="290" cy="160" r="110" clip-path="url(#bubble-clip)"/>
+  <text class="lbl" x="230" y="35">Science</text>
+  <text class="lbl" x="230" y="305">Art</text>
+  <text class="lbl on-surface" x="110" y="165">Humans</text>
+  <text class="lbl on-surface" x="350" y="165">Machines</text>
+  <text class="lbl lens" x="230" y="165">MishMash</text>
   </svg>
   </div>
   <aside class="notes">
