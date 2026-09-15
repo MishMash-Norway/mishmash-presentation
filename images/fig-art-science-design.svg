@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#231f20">
+<!-- Split out of fig-art-science-base.svg so the map can be built up. -->
+<defs><marker id="ax" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#231f20"/></marker></defs>
+<g stroke="#231f20" stroke-width="4" fill="none"><path d="M800 330 V60" marker-end="url(#ax)"/></g>
+<g font-size="30"><text x="830" y="150">Design</text><text x="830" y="186">Engineering</text></g>
+</svg>
