@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" width="1600" height="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" fill="#231f20">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#231f20"/></marker><marker id="arrm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#718096"/></marker></defs>
+<circle cx="800" cy="300" r="120" fill="#231f20"/><text x="800" y="290" font-size="28" text-anchor="middle" font-weight="normal" fill="#fff" >one system,</text>
+<text x="800" y="328" font-size="28" text-anchor="middle" font-weight="normal" fill="#fff" >one use</text>
+<rect x="80" y="90" width="600" height="100" rx="14" fill="#9a90cf" stroke="#9a90cf" stroke-width="3"/>
+<text x="380" y="150" font-size="28" text-anchor="middle" font-weight="bold" fill="#231f20" >Who benefits?</text>
+<line x1="675" y1="240" x2="680" y2="140" stroke="#a0aec0" stroke-width="4"/><rect x="920" y="90" width="600" height="100" rx="14" fill="#9a90cf" stroke="#9a90cf" stroke-width="3"/>
+<text x="1220" y="150" font-size="28" text-anchor="middle" font-weight="bold" fill="#231f20" >Who is harmed, or could be?</text>
+<line x1="925" y1="240" x2="920" y2="140" stroke="#a0aec0" stroke-width="4"/><rect x="80" y="410" width="600" height="100" rx="14" fill="#b3e297" stroke="#b3e297" stroke-width="3"/>
+<text x="380" y="470" font-size="28" text-anchor="middle" font-weight="bold" fill="#231f20" >Is the benefit proportional to the harm?</text>
+<line x1="675" y1="360" x2="680" y2="460" stroke="#a0aec0" stroke-width="4"/><rect x="920" y="410" width="600" height="100" rx="14" fill="#b3e297" stroke="#b3e297" stroke-width="3"/>
+<text x="1220" y="470" font-size="28" text-anchor="middle" font-weight="bold" fill="#231f20" >Are the harms consented to?</text>
+<line x1="925" y1="360" x2="920" y2="460" stroke="#a0aec0" stroke-width="4"/><text x="800" y="560" font-size="24" text-anchor="middle" font-weight="normal" fill="#718096" >Asked of “AI in general” they have no answer. Asked of one system and one use, they usually do.</text>
+
+</svg>

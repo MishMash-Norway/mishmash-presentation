@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MishMash — Centre for AI and Creativity</title>
+<link rel="icon" href="logo/favicon.svg">
+<link rel="stylesheet" href="lib/reveal/reset.css">
+<link rel="stylesheet" href="lib/reveal/reveal.css">
+<link rel="stylesheet" href="lib/reveal/theme/white.css" id="theme">
+<style>
+/* ============================================================
+   MishMash 2026 visual identity.
+   Tokens copied from mishmash-web/site/assets/css/brand.css.
+   Rules: flat surfaces, hard edges, 2px ink rules. No gradients,
+   no shadows, no rounded corners. See BRAND.md in mishmash-web.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Roboto Condensed'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('fonts/roboto-condensed-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto Condensed'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('fonts/roboto-condensed-700-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('fonts/inter-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('fonts/inter-400-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('fonts/inter-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('fonts/inter-700-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+:root {
+  /* Surfaces */
+  --mm-green: #b3e297;
+  --mm-purple: #9a90cf;
+  --mm-blue: #a5cbed;
+  --mm-pink: #efadb2;
+  /* Ink and accents */
+  --mm-ink: #231f20;
+  --mm-yellow: #d1e422;
+  --mm-red: #ee5648;
+  --mm-white: #ffffff;
+  /* Tints (~15 % colour on white) */
+  --mm-green-tint: #f0f8e9;
+  --mm-purple-tint: #f0eef9;
+  --mm-blue-tint: #edf4fb;
+  --mm-pink-tint: #fdf1f1;
+  --mm-yellow-tint: #fbfce6;
+  /* Greys derived from ink */
+  --mm-ink-70: #5c5859;
+  --mm-ink-40: #a7a4a5;
+  --mm-ink-15: #dedcdc;
+  --mm-ink-5: #f4f3f3;
+
+  --mm-font-display: 'Roboto Condensed', 'Acumin Pro Condensed', 'Arial Narrow', Arial, sans-serif;
+  --mm-font-body: 'Inter', Arial, sans-serif;
+
+  /* Reveal overrides */
+  --r-background-color: var(--mm-white);
+  --r-main-font: var(--mm-font-body);
+  --r-heading-font: var(--mm-font-display);
+  --r-main-color: var(--mm-ink);
+  --r-heading-color: var(--mm-ink);
+  --r-link-color: var(--mm-ink);
+  --r-heading-text-transform: none;
+  --r-heading-font-weight: 700;
+  --r-main-font-size: 44px;
+
+  /* The section colour of the current slide; each section resets it. */
+  --slide-colour: var(--mm-green);
+}
+
+/* ---------- Type ---------- */
+
+.reveal { font-family: var(--mm-font-body); color: var(--mm-ink); }
+.reveal h1, .reveal h2, .reveal h3 {
+  font-family: var(--mm-font-display);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  margin: 0 0 0.35em 0;
+  color: var(--mm-ink);
+}
+.reveal h1 { font-size: 2.6em; }
+.reveal h2 { font-size: 1.85em; }
+.reveal h3 { font-size: 1.15em; }
+.reveal .slides section { text-align: left; }
+.reveal p, .reveal li { line-height: 1.32; }
+.reveal ul { margin-left: 0.7em; }
+.reveal li { margin: 0.28em 0; }
+.reveal strong { font-weight: 700; }
+.reveal em { font-style: italic; }
+
+/* Flat identity: kill reveal's default image chrome everywhere. */
+.reveal img, .reveal svg, .reveal iframe, .reveal .card, .reveal figure {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.reveal img { border: none; background: none; max-height: 64vh; }
+
+/* Links: ink text with a purple underline, per the identity. */
+.reveal a {
+  color: var(--mm-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--mm-purple);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+/* ---------- Section label: small uppercase display type over an ink rule ---------- */
+
+.kicker {
+  font-family: var(--mm-font-display);
+  font-size: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mm-ink);
+  margin: 0 0 0.5em 0;
+  padding-bottom: 0.25em;
+  border-bottom: 4px solid var(--slide-colour);
+  display: table;          /* block-level but shrink-to-fit: never shares a line box with a figure */
+}
+.kicker .sep { color: var(--mm-ink-40); margin: 0 0.5em; }
+
+/* ---------- Dividers: full-bleed surface colour, wordmark in its pair colour ---------- */
+
+.reveal section.divider { text-align: left; }
+.reveal section.divider .q {
+  font-family: var(--mm-font-display);
+  font-size: 5.6em;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--mm-ink);
+}
+.reveal section.divider .sub {
+  font-size: 0.82em;
+  margin: 0.5em 0 0 0;
+  max-width: 22em;
+  color: var(--mm-ink);
+}
+.reveal section.divider .mark {
+  position: absolute;
+  right: 0; bottom: 0;
+  width: 190px;
+  max-height: none;
+}
+
+/* ---------- Building blocks ---------- */
+
+.lead { font-size: 1.28em; line-height: 1.28; font-weight: 400; max-width: 22em; }
+.huge { font-family: var(--mm-font-display); font-size: 3.1em; line-height: 0.92; letter-spacing: -0.02em; }
+.muted { color: var(--mm-ink-70); }
+.small { font-size: 0.62em; }
+.caption { font-size: 0.5em; color: var(--mm-ink-70); margin-top: 0.4em; line-height: 1.3; }
+.center { text-align: center !important; }
+.arrow::before { content: "\2192"; margin-right: 0.35em; }
+
+.cols  { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; align-items: start; }
+.cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1em; align-items: start; }
+.cols.mid { align-items: center; }
+.wide-left { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.6em; align-items: center; }
+
+/* Flat cards: 2px ink outline, tinted fill, square corners. */
+.card {
+  border: 2px solid var(--mm-ink);
+  padding: 0.55em 0.7em;
+  font-size: 0.68em;
+  height: 100%;
+  box-sizing: border-box;
+  background: var(--mm-white);
+}
+.card h3 { font-size: 1.25em; margin: 0 0 0.3em 0; }
+.card p { margin: 0; }
+.card.green  { background: var(--mm-green-tint); }
+.card.purple { background: var(--mm-purple-tint); }
+.card.blue   { background: var(--mm-blue-tint); }
+.card.pink   { background: var(--mm-pink-tint); }
+.card.yellow { background: var(--mm-yellow-tint); }
+
+/* Numbers */
+.nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8em; }
+.nums div { border: 2px solid var(--mm-ink); padding: 0.55em 0.5em; background: var(--mm-white); }
+.nums b {
+  display: block;
+  font-family: var(--mm-font-display);
+  font-size: 2.5em;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.nums span { display: block; font-size: 0.5em; line-height: 1.25; margin-top: 0.3em; }
+.nums div:nth-child(4n+1) { background: var(--mm-green-tint); }
+.nums div:nth-child(4n+2) { background: var(--mm-purple-tint); }
+.nums div:nth-child(4n+3) { background: var(--mm-blue-tint); }
+.nums div:nth-child(4n+4) { background: var(--mm-pink-tint); }
+
+/* Work-package list */
+.wps { font-size: 0.66em; }
+.wps div { display: grid; grid-template-columns: 4.2em 1fr; gap: 0.6em; padding: 0.3em 0; border-top: 2px solid var(--mm-ink-15); }
+.wps div:last-child { border-bottom: 2px solid var(--mm-ink-15); }
+.wps b { font-family: var(--mm-font-display); font-size: 1.25em; letter-spacing: 0.01em; }
+.wps span { align-self: center; }
+.wps i { font-style: normal; color: var(--mm-ink-70); }
+
+/* Picture grids */
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6em; }
+.grid7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6em; }
+.grid4 figure, .grid7 figure { margin: 0; }
+.grid4 img, .grid7 img { width: 100%; height: 26vh; object-fit: cover; display: block; border: 2px solid var(--mm-ink); max-height: none; }
+.grid7 img { height: 21vh; }
+.grid4 figcaption, .grid7 figcaption { font-size: 0.44em; color: var(--mm-ink-70); margin-top: 0.25em; line-height: 1.25; }
+
+/* Headline collage — flat, no rotation, no shadows */
+.collage { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5em; }
+.collage img { width: 100%; height: 25vh; object-fit: cover; object-position: top; border: 2px solid var(--mm-ink); max-height: none; }
+
+/* Threat / promise */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--mm-ink); font-size: 0.7em; }
+.split > div { padding: 0.7em 0.9em; }
+.split > div:first-child { background: var(--mm-pink-tint); border-right: 2px solid var(--mm-ink); }
+.split > div:last-child { background: var(--mm-green-tint); }
+.split h3 { font-size: 1.3em; }
+.split ul { margin: 0 0 0 0.9em; }
+
+/* Timeline */
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 0.6em; font-size: 0.62em; }
+.timeline div { border-top: 6px solid var(--mm-blue); padding: 0.6em 0.9em 0 0; }
+.timeline div:nth-child(2) { border-top-color: var(--mm-purple); }
+.timeline div:nth-child(3) { border-top-color: var(--mm-green); }
+.timeline div:nth-child(4) { border-top-color: var(--mm-pink); }
+.timeline b { display: block; font-family: var(--mm-font-display); font-size: 1.5em; letter-spacing: -0.01em; }
+
+/* Map */
+.mapwrap { position: relative; width: 100%; max-width: 900px; margin: 0 auto; }
+.mapwrap svg { width: 100%; height: auto; max-height: 80vh; display: block; }
+.mapwrap .city { fill: var(--mm-ink); }
+.mapwrap .here { fill: var(--mm-red); }
+.mapwrap text {
+  font-family: var(--mm-font-body); font-size: 20px; fill: var(--mm-ink);
+  paint-order: stroke fill; stroke: var(--mm-white); stroke-width: 5px; stroke-linejoin: round;
+}
+.mapwrap text.hilite { font-weight: 700; fill: var(--mm-red); font-size: 24px; }
+
+/* Embeds */
+.embed { width: 1600px; height: 900px; border: 2px solid var(--mm-ink); margin: 0 auto; overflow: hidden; }
+.embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+.netwrap { width: 1700px; height: 730px; border: 2px solid var(--mm-ink); margin: 0 auto; overflow: hidden; }
+.netwrap iframe { width: 1700px; max-width: none; height: 1450px; max-height: none; margin-top: -438px; border: 0; display: block; }
+
+/* Title slide */
+.title-mark { width: 480px; display: block; margin: 0 0 0.35em -8px; max-height: none; }
+.tagline { font-family: var(--mm-font-display); font-size: 1.9em; line-height: 0.95; letter-spacing: -0.01em; margin: 0 0 0.5em 0; }
+.title-rule { border: none; border-top: 4px solid var(--mm-ink); margin: 0 0 0.55em 0; width: 480px; }
+.presenter { font-size: 0.72em; line-height: 1.4; margin: 0; }
+
+/* Chrome */
+.reveal .footer {
+  position: fixed; bottom: 16px; left: 24px;
+  font-family: var(--mm-font-display);
+  font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--mm-ink-40); z-index: 10;
+}
+.reveal .progress { color: var(--mm-ink); height: 4px; }
+.reveal .slide-number { font-family: var(--mm-font-display); background: none; color: var(--mm-ink-40); }
+.reveal .controls { color: var(--mm-ink-40); }
+
+/* Level badge, top right. Click to cycle 3 / 10 / 30 minutes. */
+#level-badge {
+  position: fixed; top: 14px; right: 18px; z-index: 40;
+  font-family: var(--mm-font-display); font-size: 15px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: 2px solid var(--mm-ink-15); color: var(--mm-ink-40);
+  background: var(--mm-white); padding: 4px 9px; cursor: pointer;
+}
+#level-badge:hover { border-color: var(--mm-ink); color: var(--mm-ink); }
+
+/* Full-bleed surface slides carry no footer chrome. */
+.reveal section.divider ~ * { }
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ============================================================
+     LEVELS
+       data-level="1"  core       ~3 minutes   (default)
+       data-level="2"  standard  ~10 minutes   ?level=2
+       data-level="3"  deep      ~30 minutes   ?level=3
+     Slides above the chosen level are removed before Reveal starts.
+     ============================================================ -->
+
+
+<!-- ===================== TITLE ===================== -->
+
+<section data-level="1" data-background-color="#b3e297" class="nofooter">
+  <img class="title-mark" src="logo/mishmash-wordmark-black.svg" alt="MishMash">
+  <p class="tagline">Centre for AI<br>and Creativity</p>
+  <hr class="title-rule">
+  <p class="presenter"><span id="occasion"></span>
+  <span class="muted">One of Norway's national AI research centres &middot; mishmash.no</span></p>
+  <aside class="notes">
+    What MishMash is, in five questions: why, what, who, where, when — and end with how you can take part.
+    MishMash is one of the national AI research centres funded by the Research Council of Norway. We study AI from the perspective of creativity.
+  </aside>
+</section>
+
+
+<!-- ===================== WHY? ===================== -->
+
+<section data-level="1" data-background-color="#b3e297" class="divider">
+  <p class="q">Why?</p>
+  <p class="sub">Because there is no agreement about what AI is doing to us — and that disagreement is the thing worth studying.</p>
+  <img class="mark" src="logo/mishmash-wordmark-black.svg" alt="">
+  <aside class="notes">First question: why does a centre like this exist at all.</aside>
+</section>
+
+<section data-level="1">
+  <p class="kicker">Why? <span class="sep">&middot;</span> 2026</p>
+  <h2>A mishmash of opinions</h2>
+  <div class="collage">
+    <img src="images/news-guardian.png" alt="Newspaper headline about AI and artists">
+    <img src="images/news-vartland.jpg" alt="Newspaper headline about AI music at funerals">
+    <img src="images/news-un.png" alt="UNESCO headline about artists' income">
+    <img src="images/news-nrk-kiband.png" alt="Headline about an AI band">
+    <img src="images/news-forbes-creativity.png" alt="Headline about AI transforming creativity">
+    <img src="images/news-forbes-cinema.png" alt="Headline about AI reinventing film production">
+    <img src="images/news-mckinsey.png" alt="Headline about AI productivity gains">
+    <img src="images/news-variety.png" alt="Headline about AI in the entertainment industry">
+  </div>
+  <p class="lead" style="margin-top:.5em">There is a confusing mixture — a <strong>mishmash</strong> — of notions about AI's potential and its risks.</p>
+  <aside class="notes">
+    Headlines from this year. Threat on one side: actors and musicians campaigning against training on their work, church musicians reacting to AI songs at funerals, UNESCO reporting falling income for artists.
+    Promise on the other: transformed creativity, reinvented film production, productivity gains.
+    Both are true at once, and that confusion is where the centre gets its name.
+  </aside>
+</section>
+
+<section data-level="2">
+  <p class="kicker">Why?</p>
+  <h2>Both are true at once</h2>
+  <div class="split">
+    <div>
+      <h3>Threat</h3>
+      <ul>
+        <li>Models trained on artists' work without agreement</li>
+        <li>Falling income across the creative sector</li>
+        <li>A narrower, more uniform culture</li>
+        <li>Energy, water and hardware</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Promise</h3>
+      <ul>
+        <li>New instruments, new forms, new works</li>
+        <li>Archives that can finally be searched</li>
+        <li>Tools in the hands of people without a studio</li>
+        <li>Methods that travel out of the arts</li>
+      </ul>
+    </div>
+  </div>
+  <p class="lead" style="margin-top:.6em">Most public arguments pick a side. A research centre has to hold both.</p>
+  <aside class="notes">
+    You can find good evidence for either column. The mistake is to treat the question as settled in either direction.
+    Our job is to produce evidence about specific systems in specific uses, rather than opinions about AI in general.
+  </aside>
+</section>
+
+<section data-level="2">
+  <p class="kicker">Why? <span class="sep">&middot;</span> the name</p>
+  <div class="wide-left">
+    <div>
+      <p class="huge">mish&middot;mash</p>
+      <p class="lead"><em>noun</em> — a confused mixture.</p>
+      <p style="font-size:.72em;margin-top:.6em">Not an acronym. It began as a working title, describing how the founders saw the group of people and institutions that had assembled.</p>
+      <p style="font-size:.72em">Among more than 150 centre proposals pitched to the Research Council of Norway in 2024, it was one of the few names people remembered. So it stuck.</p>
+    </div>
+    <img src="images/mm-bubbles.svg" alt="The MishMash bubbles emblem">
+  </div>
+  <aside class="notes">
+    People always ask about the name. It is not an acronym. It describes the deliberate mix of artistic and scientific disciplines — and the fact that we are merging them into something new.
+    The full story is on arj.no and in the FAQ on mishmash.no.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">Why? <span class="sep">&middot;</span> definitions</p>
+  <h2>Is a machine creative?</h2>
+  <p class="lead"><strong>Creativity</strong> — the ability to form novel and meaningful ideas or works. <span class="muted small">(Boden 2004)</span></p>
+  <p class="lead" style="margin-top:.5em"><strong>Creative AI</strong> — machine systems that can produce novel and meaningful results that stand independently. <span class="muted small">(de Vries 2020)</span></p>
+  <p class="lead" style="margin-top:.7em">Creativity is a fundamental human trait. It has shaped technology, and been shaped by it, for as long as there has been technology.</p>
+  <aside class="notes">
+    Two definitions we work from. Note that "novel and meaningful" is a demanding pair: a random generator is novel and not meaningful; a copy is meaningful and not novel.
+    The open question is not whether a machine can be creative in the abstract, but how human and machine creativity differ, and how the two can be co-creative.
+  </aside>
+</section>
+
+<section data-level="2" class="center">
+  <p class="kicker">Why? <span class="sep">&middot;</span> where we stand</p>
+  <img src="images/mm-humans-machines-animate.gif" alt="Two circles, humans and machines, moving together until they overlap" style="max-height:60vh;display:block;margin:.2em auto">
+  <p class="lead center" style="margin:.3em auto 0">All technology, AI included, is made <strong>by</strong> people and <strong>for</strong> people. The interesting things happen where the circles overlap.</p>
+  <aside class="notes">
+    Most attention goes to what the machines can do — benchmarks, capabilities, model releases. That is one circle. People get discussed as users, or as the ones being replaced. That is the other.
+    MishMash lives in the overlap: the meeting point between human and machine, and between art and science.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">Why? <span class="sep">&middot;</span> our entry point</p>
+  <h2>Why start with the arts</h2>
+  <p class="lead">Artists have been putting these systems under pressure since the 1950s. They find the edges first.</p>
+  <div class="cols3" style="margin-top:.7em">
+    <div class="card green"><h3>They push harder</h3><p>Artistic use breaks a system in ways benchmark tests never reach.</p></div>
+    <div class="card purple"><h3>They ask first</h3><p>Authorship, consent and ownership arrived in the arts before they arrived anywhere else.</p></div>
+    <div class="card pink"><h3>They show the public</h3><p>A performance or an exhibition puts the question in front of people who will never read a paper.</p></div>
+  </div>
+  <p class="caption">Artistic exploration is our entry point for critical discussion about AI and its implications for human–machine interaction and society.</p>
+  <aside class="notes">
+    This is the strategic bet of the centre. Not "AI applied to art", but art as the method for interrogating AI.
+    If you work on AI anywhere else, the creative sector is a good place to look for the failure modes, and for the methods that keep people in control.
+  </aside>
+</section>
+
+
+<!-- ===================== WHAT? ===================== -->
+
+<section data-level="1" data-background-color="#9a90cf" class="divider">
+  <p class="q">What?</p>
+  <p class="sub">One sentence, three approaches, seven work packages.</p>
+  <img class="mark" src="logo/mishmash-wordmark-green.svg" alt="">
+  <aside class="notes">Second question: what the centre actually does.</aside>
+</section>
+
+<section data-level="1">
+  <p class="kicker">What? <span class="sep">&middot;</span> the primary objective</p>
+  <p class="huge" style="margin-top:.3em">MishMash will<br>
+    <span style="color:var(--mm-ink)">create</span>,
+    <span style="color:var(--mm-ink)">explore</span> and
+    <span style="color:var(--mm-ink)">reflect on</span><br>
+    AI <em>for</em>, <em>through</em> and <em>in</em><br>
+    creative practices.</p>
+  <aside class="notes">
+    The whole centre in one sentence. Three verbs and three prepositions, and the prepositions matter.
+    Create: build systems, tools, artworks, frameworks and policies. Explore: use AI in creative practice, and take creative methods into other domains. Reflect: study the impacts critically.
+    AI for creative practices, AI through creative practices, AI in creative practices.
+  </aside>
+</section>
+
+<section data-level="2">
+  <p class="kicker">What? <span class="sep">&middot;</span> three approaches</p>
+  <h2>Create &middot; explore &middot; reflect</h2>
+  <div class="cols3">
+    <div class="card purple"><h3>CREATE</h3><p>Making AI-based systems, tools and artworks — and the frameworks and policies around them.</p></div>
+    <div class="card green"><h3>EXPLORE</h3><p>Using AI in creative practice, and taking creative methods into other fields.</p></div>
+    <div class="card blue"><h3>REFLECT</h3><p>Critically studying what AI does to people, culture and society.</p></div>
+  </div>
+  <p class="lead" style="margin-top:.7em">Every work package does all three. It is also not a bad description of what happens in any lab.</p>
+  <aside class="notes">
+    These three are also three kinds of people: engineers and artists create; educators, clinicians and curators explore; scholars from sociology, philosophy and law reflect.
+    Usually each group works at its own level, alone. Putting them in the same room is most of what the centre is for.
+  </aside>
+</section>
+
+<section data-level="1">
+  <p class="kicker">What? <span class="sep">&middot;</span> seven themes</p>
+  <h2>Seven work packages</h2>
+  <div class="wps">
+    <div><b>WP1</b><span>AI for artistic performances <i>— live music and art where people and machines improvise together</i></span></div>
+    <div><b>WP2</b><span>AI in artistic processes <i>— how AI changes the making of film, games, music and visual art</i></span></div>
+    <div><b>WP3</b><span>Creative use of AI for health and well-being <i>— arts therapies, emotion, consent</i></span></div>
+    <div><b>WP4</b><span>Creative use of AI in education <i>— AI literacy for schools and lifelong learning</i></span></div>
+    <div><b>WP5</b><span>AI in the creative and cultural industries <i>— copyright, business models, sustainability</i></span></div>
+    <div><b>WP6</b><span>AI for cultural heritage <i>— opening archives, libraries and museums</i></span></div>
+    <div><b>WP7</b><span>Human-centric AI for creative problem-solving <i>— from industrial design to emergency response</i></span></div>
+  </div>
+  <aside class="notes">
+    Seven themes, one work package each. Some use AI in artistic applications; others take creative methods into adjacent domains — health, education, heritage, problem-solving.
+    Each WP has a lead and two sidekicks from different institutions, deliberately.
+  </aside>
+</section>
+
+<section data-level="3" class="center">
+  <p class="kicker">What? <span class="sep">&middot;</span> the structure</p>
+  <img src="images/mm-cube-wps.svg" alt="The front face of the MishMash cube: seven work packages" style="max-height:66vh">
+  <p class="caption center">The front face: seven themes, one work package each. This is where the disciplines and the partner institutions live.</p>
+  <aside class="notes">To explain how a collaboration this large works, we made a cube. Three axes, one face at a time. Front face first.</aside>
+</section>
+
+<section data-level="3" class="center">
+  <p class="kicker">What? <span class="sep">&middot;</span> the structure</p>
+  <img src="images/mm-cube-approaches.svg" alt="The top face of the MishMash cube: create, explore, reflect" style="max-height:66vh">
+  <p class="caption center">The top face: the three approaches. Every work package does all three.</p>
+  <aside class="notes">Top face: create, explore, reflect. Cross-cutting workshops are organised along this axis, so the work packages are not silos.</aside>
+</section>
+
+<section data-level="2" class="center">
+  <p class="kicker">What? <span class="sep">&middot;</span> the structure</p>
+  <img src="images/mm-cube.svg" alt="The MishMash cube: seven work packages as themes, create/explore/reflect as approaches, machines/humans/society as perspectives" style="max-height:66vh">
+  <p class="caption center">Themes &times; approaches &times; perspectives. A structured <em>mesh</em>, built out of the mishmash.</p>
+  <aside class="notes">
+    The third axis is the perspectives: machines, humans, society. Every project sits somewhere in this cube.
+    The point of the cube is that a project is never only a theme — it is a theme, an approach, and a perspective at once, which is what forces people to meet.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">What? <span class="sep">&middot;</span> three perspectives</p>
+  <h2>Machines &middot; humans &middot; society</h2>
+  <div class="wide-left">
+    <img src="images/fig-mhs-base.svg" alt="A machine and a person inside a circle representing society" style="max-height:50vh;margin:0 auto;display:block">
+    <div>
+      <div class="card purple"><h3>Machines</h3><p>What can these systems actually do, and why? Data, models, limits.</p></div>
+      <div class="card green" style="margin-top:.5em"><h3>Humans</h3><p>How do we create with them? Agency, skill, bodies, craft.</p></div>
+      <div class="card blue" style="margin-top:.5em"><h3>Society</h3><p>What changes when they enter the world? Authorship, law, economy, education.</p></div>
+    </div>
+  </div>
+  <aside class="notes">
+    Many disagreements about AI are really disagreements about which of these three you are talking about.
+    A claim about what a model can do is not a claim about what it does to a profession.
+  </aside>
+</section>
+
+<section data-level="2">
+  <p class="kicker">What? <span class="sep">&middot;</span> in practice</p>
+  <h2>What it looks like</h2>
+  <div class="grid7">
+    <figure><img src="images/wp1-erdem-rhyglyph.jpg" alt="A performer with an interactive AI music system"><figcaption>WP1 — improvising with a machine partner</figcaption></figure>
+    <figure><img src="images/wp2-birkeland-film.jpg" alt="AI used in film production"><figcaption>WP2 — AI in film production</figcaption></figure>
+    <figure><img src="images/wp3-bergsland-pose.jpg" alt="Movement and sound in a health context"><figcaption>WP3 — movement, sound and well-being</figcaption></figure>
+    <figure><img src="images/wp4-sorbo-teachers.png" alt="Teachers working with AI tools"><figcaption>WP4 — AI literacy with teachers</figcaption></figure>
+    <figure><img src="images/wp5-eidsvold-copyright.png" alt="Copyright and AI"><figcaption>WP5 — copyright and rights management</figcaption></figure>
+    <figure><img src="images/wp6-lartillot-music-analysis.jpg" alt="Computational analysis of folk music"><figcaption>WP6 — folk music archives, analysed</figcaption></figure>
+    <figure><img src="images/wp7-nordby-openbridge.png" alt="Maritime bridge design"><figcaption>WP7 — design for high-stakes work</figcaption></figure>
+  </div>
+  <aside class="notes">
+    One picture per work package, from the people actually doing the work.
+    Pick two or three to talk about depending on the room — for a general audience WP4 and WP6 usually land best.
+  </aside>
+</section>
+
+<section data-level="2" class="center">
+  <p class="kicker">What? <span class="sep">&middot;</span> an example</p>
+  <div class="embed">
+    <iframe data-src="https://www.youtube-nocookie.com/embed/h_6M-_ZPYpA?rel=0" title="Strings On-Line installation, NIME 2020" allowfullscreen></iframe>
+  </div>
+  <p class="caption center">Strings On-Line — self-playing guitars that sense the room. NIME 2020.</p>
+  <aside class="notes">
+    Acoustic guitars with microcomputers, sensors and actuators, so generated sound radiates from a wooden body rather than a loudspeaker.
+    The input side is the point: the guitars sense people moving in the space, so the mapping from human action to sound is the design problem.
+    Every system most people have met is disembodied — you type, a file comes back. A body changes what a system can know, and what it can be held to.
+  </aside>
+</section>
+
+
+<!-- ===================== WHO? ===================== -->
+
+<section data-level="1" data-background-color="#efadb2" class="divider">
+  <p class="q">Who?</p>
+  <p class="sub">More than 200 researchers and practitioners, from art schools to engineering departments.</p>
+  <img class="mark" src="logo/mishmash-wordmark-red.svg" alt="">
+  <aside class="notes">Third question: who is in it.</aside>
+</section>
+
+<section data-level="1">
+  <p class="kicker">Who? <span class="sep">&middot;</span> the consortium</p>
+  <h2>MishMash in numbers</h2>
+  <div class="nums">
+    <div><b>16</b><span>higher education institutions</span></div>
+    <div><b>5</b><span>research institutes</span></div>
+    <div><b>27</b><span>other Norwegian partners</span></div>
+    <div><b>7</b><span>international partners</span></div>
+  </div>
+  <div class="nums" style="margin-top:.7em">
+    <div><b>200+</b><span>researchers and practitioners</span></div>
+    <div><b>35</b><span>PhDs and postdocs</span></div>
+    <div><b>7</b><span>work packages</span></div>
+    <div><b>1</b><span>National Library</span></div>
+  </div>
+  <p class="caption">Counted from mishmash.no. Institutes: SINTEF, Simula, IFE, NILU, NORSUS. Partners range from the National Museum to festivals, music organisations and companies.</p>
+  <aside class="notes">
+    A big consortium. The first centre at this scale in Norway to span from the soft disciplines to the hard — art to engineering — with both public and private partners.
+    Nearly every Norwegian university and arts academy is in it.
+  </aside>
+</section>
+
+<section data-level="2" data-force-light>
+  <p class="kicker">Who? <span class="sep">&middot;</span> mishmash.no/people/network</p>
+  <div class="netwrap">
+    <iframe data-src="https://mishmash.no/people/network/" title="The live MishMash people network" allowfullscreen></iframe>
+  </div>
+  <aside class="notes">
+    This is the live network from the website — it needs internet.
+    You can connect people by institution, by tag or by work package, filter by role, and hover for details.
+    Worth pointing out that this is generated automatically from the national research archive, not maintained by hand.
+    If the graph loads off-centre, use the reset control in the bottom right of the frame, or the page's own Full screen button.
+    No internet in the room? Reload the deck with &static=1 and this becomes a still image.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">Who? <span class="sep">&middot;</span> three kinds of people</p>
+  <h2>Who creates, who explores, who reflects</h2>
+  <div class="cols3">
+    <div class="card purple"><h3>Create</h3><p>Engineers and artists. They build the systems and make the work.</p></div>
+    <div class="card green"><h3>Explore</h3><p>Educators, clinicians, curators — the people who put the work in front of others.</p></div>
+    <div class="card blue"><h3>Reflect</h3><p>Scholars from sociology, philosophy and law. They ask what it means, and what changes.</p></div>
+  </div>
+  <p class="lead" style="margin-top:.7em">Usually these three groups work at their own level, alone. Co-location is what changes that.</p>
+  <aside class="notes">
+    At RITMO we have had music researchers, psychologists and informatics people in the same building for nine years, sharing a coffee machine. That is what made the interdisciplinary work real rather than nominal.
+    MishMash is distributed, so we have to manufacture that proximity — which is what the weekly and biweekly rhythm is for.
+  </aside>
+</section>
+
+<section data-level="3" class="center">
+  <p class="kicker">Who? <span class="sep">&middot;</span> how disciplines meet</p>
+  <img src="images/disciplinarities.svg" alt="Intra-, cross-, multi-, inter- and transdisciplinary work" style="max-height:58vh">
+  <p class="caption center">Intra, cross, multi, inter, trans. A centre needs all of them at different moments. <span class="muted">Jensenius, <em>Sound Actions</em> (MIT Press, 2022)</span></p>
+  <aside class="notes">
+    Do you work interdisciplinary, or are you interdisciplinary? Most so-called interdisciplinary projects are cross-disciplinary: everyone stays comfortable in their own discipline and contributes a piece.
+    The real thing starts when the terminology breaks down and people step on each other's toes. It is painful, and it is where the new things come from.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">Who? <span class="sep">&middot;</span> an example</p>
+  <h2>Ten definitions of noise</h2>
+  <p class="lead">At a MishMash workshop, ten people from different backgrounds each gave a ten-minute talk on one word: <em>noise</em>.</p>
+  <div class="cols3" style="margin-top:.6em">
+    <div class="card green"><h3>Randomness</h3><p>the mathematician</p></div>
+    <div class="card purple"><h3>A fluctuation</h3><p>the physicist</p></div>
+    <div class="card blue"><h3>The unwanted part</h3><p>signal processing</p></div>
+  </div>
+  <div class="cols3" style="margin-top:.6em">
+    <div class="card pink"><h3>Material</h3><p>the sound artist</p></div>
+    <div class="card yellow"><h3>Disturbance</h3><p>the philosopher</p></div>
+    <div class="card green"><h3>The signal</h3><p>whoever is recording ventilation this summer</p></div>
+  </div>
+  <p class="lead" style="margin-top:.6em">Ten definitions, no agreement, and a very good discussion. That is what multidisciplinary looks like in practice.</p>
+  <aside class="notes">
+    And it changes with what you are doing. I spent a summer recording ventilation systems for a project, so for me the ventilation was the signal, not the noise.
+    The lesson: do not resolve the disagreement too early. The friction is the content.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">Who? <span class="sep">&middot;</span> across sectors</p>
+  <h2>Not only universities</h2>
+  <div class="cols3">
+    <div class="card purple"><h3>Universities and arts academies</h3><p>Nearly every one in Norway.</p></div>
+    <div class="card green"><h3>Research institutes</h3><p>SINTEF, Simula, IFE, NILU, NORSUS.</p></div>
+    <div class="card blue"><h3>Public sector</h3><p>The National Library, museums, the broadcaster.</p></div>
+  </div>
+  <div class="cols" style="margin-top:.7em">
+    <div class="card pink"><h3>Creative industries</h3><p>Festivals, labels, film, games, rights organisations.</p></div>
+    <div class="card yellow"><h3>Freelancers and artists</h3><p>In this sector a "user partner" can be one person with a practice.</p></div>
+  </div>
+  <aside class="notes">
+    The creative sector is unusual: much of it is freelancers. That shapes how we do research — residencies, seed funding, and artistic research alongside PhDs and postdocs.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">Who? <span class="sep">&middot;</span> governance</p>
+  <h2>How it is run</h2>
+  <div class="cols3">
+    <div class="card green"><h3>Management</h3><p>Day-to-day coordination of the centre's activities.</p></div>
+    <div class="card purple"><h3>Work package leader group</h3><p>Leads and two "sidekicks" for each of the seven WPs.</p></div>
+    <div class="card blue"><h3>Board</h3><p>Governance and strategic decisions.</p></div>
+  </div>
+  <div class="cols3" style="margin-top:.6em">
+    <div class="card pink"><h3>Council</h3><p>Strategic oversight and partner compliance.</p></div>
+    <div class="card yellow"><h3>Scientific advisory board</h3><p>International scientific guidance and evaluation.</p></div>
+    <div class="card green"><h3>Stakeholder board</h3><p>Representatives from partner organisations.</p></div>
+  </div>
+  <p class="caption arrow">mishmash.no/about/organisation/</p>
+  <aside class="notes">
+    Deliberately distributed governance: no single institution controls the centre, and the boards are drawn from across the consortium and from abroad.
+  </aside>
+</section>
+
+
+<!-- ===================== WHERE? ===================== -->
+
+<section data-level="1" data-background-color="#efadb2" class="divider">
+  <p class="q">Where?</p>
+  <p class="sub">Everywhere in Norway — and mostly online.</p>
+  <img class="mark" src="logo/mishmash-wordmark-red.svg" alt="">
+  <aside class="notes">Fourth question: where the centre is.</aside>
+</section>
+
+<section data-level="1">
+  <p class="kicker">Where? <span class="sep">&middot;</span> a national centre</p>
+  <div class="wide-left">
+    <div class="mapwrap">
+      <svg viewBox="-132 -14 724 754" role="img" aria-label="Map of Norway with MishMash partner cities marked">
+        <image href="images/mm-norway-map.png" x="0" y="0" width="579" height="720"></image>
+        <!-- Dot positions computed from each city's lon/lat against this outline.
+             data-city keys match the LOCAL table at the foot of this file; the one
+             named by ?place= is drawn in red. Default: none highlighted.
+             West-coast labels are right-anchored, which is why the viewBox has a
+             left margin. -->
+        <g data-city="tromso"><circle class="city" cx="325" cy="84"  r="7"/><text x="347" y="92">Tromsø</text></g>
+        <g data-city="bodo"><circle class="city" cx="223" cy="213" r="7"/><text x="245" y="221">Bodø</text></g>
+        <g data-city="trondheim"><circle class="city" cx="133" cy="423" r="7"/><text x="155" y="431">Trondheim</text></g>
+        <g data-city="bergen"><circle class="city" cx="18"  cy="588" r="7"/><text x="2"   y="596" text-anchor="end">Bergen</text></g>
+        <g data-city="stavanger"><circle class="city" cx="28" cy="667" r="7"/><text x="12" y="675" text-anchor="end">Stavanger</text></g>
+        <g data-city="oslo"><circle class="city" cx="141" cy="614" r="7"/><text x="163" y="622">Oslo</text></g>
+        <g data-city="kristiansand"><circle class="city" cx="79" cy="705" r="7"/><text x="97" y="724">Kristiansand</text></g>
+      </svg>
+    </div>
+    <div>
+      <h2 style="font-size:1.6em">All over the country</h2>
+      <p class="lead">Partners from Tromsø to Kristiansand: nearly every Norwegian university and arts academy, the research institutes, the National Library, museums, festivals and companies.</p>
+      <p class="lead" style="margin-top:.5em">No single campus. The centre is a <strong>hub</strong> that strengthens the institutions themselves.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    A selection of the partner cities — there are more. The important point is that this is genuinely national, not an Oslo project with guests.
+    If you are presenting in one of these cities, say so — or run the deck with ?place= to highlight it.
+  </aside>
+</section>
+
+<!-- Local slot. Generic by default; ?place=<key> fills it from the LOCAL
+     table at the foot of this file and highlights that city on the map. -->
+<section data-level="2" id="local-slide">
+  <p class="kicker">Where? <span class="sep">&middot;</span> <span id="local-kicker">the partners</span></p>
+  <h2 id="local-heading">Wherever you are, a partner is close</h2>
+  <div class="cols mid">
+    <div>
+      <p class="lead" id="local-lead">Nearly every Norwegian university and arts academy is in MishMash, alongside the research institutes, the National Library, museums, festivals and companies.</p>
+      <ul style="font-size:.7em;margin-top:.6em" id="local-points">
+        <li>Each work package is led by one institution with two <em>sidekicks</em> from two others — collaboration is built into the structure, not hoped for.</li>
+        <li>Membership is open to researchers at any partner institution, and to the unaffiliated.</li>
+        <li>Seed funding goes to projects that cross partners.</li>
+      </ul>
+    </div>
+    <div id="local-visual">
+      <img src="images/mm-institutions-network.jpg" alt="The MishMash network of institutions">
+      <p class="caption">The institution network, generated from mishmash.no</p>
+    </div>
+  </div>
+  <aside class="notes" id="local-notes">
+    The local slot. Run the deck with ?place=uia (or another key from the LOCAL table in index.html) to swap in the host institution, its people and its work packages, and to highlight the city on the previous map.
+    Without ?place, this stays the generic national picture.
+  </aside>
+</section>
+
+<section data-level="2">
+  <p class="kicker">Where? <span class="sep">&middot;</span> the rhythm</p>
+  <h2>Mostly virtual, regularly physical</h2>
+  <div class="cols">
+    <div class="card green"><h3>Every week</h3><p><strong>MeshUp</strong> — online, Thursdays 12:00–12:30. A short talk and a discussion. Open to everyone.</p></div>
+    <div class="card purple"><h3>Every other week</h3><p>Work package check-ins.</p></div>
+  </div>
+  <div class="cols" style="margin-top:.7em">
+    <div class="card blue"><h3>Every month</h3><p>Thematic seminars and public workshops.</p></div>
+    <div class="card pink"><h3>Twice a year</h3><p>Conferences and symposia, touring Norway — talks, performances and exhibitions in one programme.</p></div>
+  </div>
+  <p class="lead" style="margin-top:.7em">A distributed centre only works if the rhythm is reliable.</p>
+  <aside class="notes">
+    The MeshUp is the heartbeat: fifteen minutes of talk, ten of questions, every Thursday at noon, open to anyone. No registration.
+    The conferences move around the country deliberately, so the centre shows up where its partners are.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">Where? <span class="sep">&middot;</span> beyond Norway</p>
+  <h2>Seven international partners</h2>
+  <p class="lead">Norwegian in its funding and its obligations, international in its collaborations.</p>
+  <p class="lead" style="margin-top:.6em">International partners can join seed-funded projects, provided there is a solid Norwegian collaboration involved. The centre primarily supports research activity in Norway.</p>
+  <p class="caption arrow">mishmash.no/institutions/</p>
+  <aside class="notes">
+    Worth being precise about this if anyone asks about joining from abroad: partnership is open, funding largely is not.
+  </aside>
+</section>
+
+
+<!-- ===================== WHEN? ===================== -->
+
+<section data-level="1" data-background-color="#a5cbed" class="divider">
+  <p class="q">When?</p>
+  <p class="sub">Started December 2025. Up to full speed now.</p>
+  <img class="mark" src="logo/mishmash-wordmark-yellow.svg" alt="">
+  <aside class="notes">Fifth question: when — and the answer is that you are catching us at the start.</aside>
+</section>
+
+<section data-level="1">
+  <p class="kicker">When? <span class="sep">&middot;</span> the shape of it</p>
+  <h2>A five-year centre</h2>
+  <div class="timeline">
+    <div><b>Dec 2025</b>Formal start. Funded by the Research Council of Norway as one of Norway's national AI centres.</div>
+    <div><b>Spring 2026</b>Recruitment of doctoral and postdoctoral fellows across the consortium.</div>
+    <div><b>Autumn 2026</b>Up to full speed. 35 PhDs and postdocs starting.</div>
+    <div><b>→ 2030</b>Five years of work, then the centre hands its results to the institutions.</div>
+  </div>
+  <p class="lead" style="margin-top:.9em">Which means: most of what MishMash will produce has not been produced yet. Now is the useful time to get involved.</p>
+  <aside class="notes">
+    In principle a five-year centre. That is why the website is built as a hub pointing at the partner institutions rather than a large archive of its own — when the centre ends, the institutions keep the work.
+    And it is why this is a good moment to join: the agenda is still being set.
+  </aside>
+</section>
+
+<section data-level="2">
+  <p class="kicker">When? <span class="sep">&middot;</span> already happened</p>
+  <h2>The first year</h2>
+  <div class="grid4">
+    <figure><img src="images/mm-opening-aula.jpg" alt="The opening event"><figcaption>The opening</figcaption></figure>
+    <figure><img src="images/mm-opening-panel.jpg" alt="A panel discussion"><figcaption>Panels and public debate</figcaption></figure>
+    <figure><img src="images/mm-opening-hackathon.jpg" alt="A hackathon"><figcaption>Hackathons</figcaption></figure>
+    <figure><img src="images/mm-opening-flytpunkt.jpg" alt="A performance"><figcaption>Performances and exhibitions</figcaption></figure>
+  </div>
+  <p class="lead" style="margin-top:.7em">Weekly MeshUps since the start, workshops across the country, and the first seed-funded projects running.</p>
+  <aside class="notes">
+    Talks, performances and exhibitions in the same programme is a deliberate format, not a nice extra. It is how a mixed consortium actually meets.
+  </aside>
+</section>
+
+<section data-level="2">
+  <p class="kicker">When? <span class="sep">&middot;</span> next</p>
+  <h2>What is coming</h2>
+  <div class="cols3">
+    <div class="card purple"><h3>35 new fellows</h3><p>PhDs and postdocs starting across the consortium, in every work package.</p></div>
+    <div class="card green"><h3>Seed funding</h3><p>Announced internally on a regular basis, for smaller cross-partner initiatives.</p></div>
+    <div class="card blue"><h3>Two conferences a year</h3><p>Touring Norway, with performances and exhibitions alongside the talks.</p></div>
+  </div>
+  <p class="caption arrow">mishmash.no/events/ &middot; mishmash.no/projects/</p>
+  <aside class="notes">
+    If you want to know what is actually happening, the events page and the projects page are the two live ones. Both update automatically from partner sources.
+  </aside>
+</section>
+
+
+<!-- ===================== JOIN ===================== -->
+
+<section data-level="1" data-background-color="#b3e297" class="divider">
+  <p class="q">Join?</p>
+  <p class="sub">Membership is free, and the weekly meeting is open to anyone.</p>
+  <img class="mark" src="logo/mishmash-wordmark-black.svg" alt="">
+  <aside class="notes">The last part, and the reason for giving this talk at all.</aside>
+</section>
+
+<section data-level="1">
+  <p class="kicker">Join <span class="sep">&middot;</span> four doors</p>
+  <h2>How to take part</h2>
+  <div class="cols">
+    <div class="card green"><h3>Come to a MeshUp</h3><p>Online, Thursdays 12:00–12:30. A talk and a discussion. Open to everyone, no registration.</p></div>
+    <div class="card purple"><h3>Become a member</h3><p>Sign up for one or more work packages. Free. Open to researchers at partner institutions <em>and</em> to the unaffiliated. Write to <strong>contact@mishmash.no</strong>.</p></div>
+  </div>
+  <div class="cols" style="margin-top:.7em">
+    <div class="card blue"><h3>Come to a conference</h3><p>Two a year, touring Norway. Talks, performances and exhibitions in one programme.</p></div>
+    <div class="card pink"><h3>Apply as a master fellow</h3><p>Master's students at affiliated institutions can apply to become a MishMash Master Fellow.</p></div>
+  </div>
+  <aside class="notes">
+    Membership costs nothing and commits you to nothing except showing up. Members can apply for seed funding together with other partners.
+    For a public audience, the MeshUp is the honest recommendation: turn up once, see whether it is for you.
+  </aside>
+</section>
+
+<section data-level="3">
+  <p class="kicker">Join <span class="sep">&middot;</span> an experiment you can inspect</p>
+  <h2>The website is part of the research</h2>
+  <div class="cols">
+    <div>
+      <ul style="font-size:.7em">
+        <li>Person profiles generated from the national research archive (NVA), or ORCID for those outside Norway.</li>
+        <li>Three reading levels on key pages — short, standard, advanced. Ted Nelson's <em>stretchtext</em>, finally buildable.</li>
+        <li>Automatic Norwegian translation, which every communications office would be sceptical about. That is why we do it.</li>
+        <li>At the bottom of every page: who edited it, the licence, the privacy level, the accessibility level.</li>
+        <li>The whole site is public on GitHub.</li>
+      </ul>
+    </div>
+    <div class="card yellow"><h3>Every file</h3><p>Every file should carry an explicit licence and an explicit privacy level — not the project, not the folder, the file. Do that and training data, sharing and reproducibility all become tractable, because you can follow what happened to what.</p></div>
+  </div>
+  <p class="caption arrow">mishmash.no/about/ai-colophon/</p>
+  <aside class="notes">
+    The site is itself a creative use of AI, and it is open about it. We want to try things, test things, break things — and say so when they break.
+    The "every file" point is the practical appeal to anyone who handles data.
+  </aside>
+</section>
+
+<section data-level="1" data-background-color="#b3e297" class="divider center">
+  <div style="text-align:center">
+    <img src="logo/mishmash-wordmark-black.svg" alt="MishMash" style="width:420px;max-height:none;margin:0 auto .3em">
+    <p class="tagline center" style="font-size:1.5em">Centre for AI and Creativity</p>
+    <p style="font-size:1.4em;font-family:var(--mm-font-display);margin:.2em 0 .4em">mishmash.no</p>
+    <img src="images/qr-mishmash.svg" alt="QR code linking to mishmash.no" style="width:300px;max-height:none;border:2px solid var(--mm-ink)">
+    <p class="small" style="margin-top:.5em">contact@mishmash.no &middot; MeshUp Thursdays 12:00</p>
+  </div>
+  <aside class="notes">Thank you. Questions.</aside>
+</section>
+
+</div>
+</div>
+
+<div class="footer">mishmash.no</div>
+<button id="level-badge" type="button" title="Click to switch talk length">…</button>
+
+<script src="lib/reveal/reveal.js"></script>
+<script src="lib/reveal-plugin/notes/notes.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---- Progressive levels -------------------------------------------
+     ?level=1  core      ~3 min   (default)
+     ?level=2  standard ~10 min
+     ?level=3  deep     ~30 min
+     Also accepts ?level=3min / 10min / 30min and ?level=all.
+     Slides above the chosen level are removed from the DOM before
+     Reveal initialises, so navigation and slide numbers stay correct.
+  --------------------------------------------------------------------*/
+
+  var LEVELS = [
+    { level: 1, label: '3 min' },
+    { level: 2, label: '10 min' },
+    { level: 3, label: '30 min' }
+  ];   /* ?level=1 / 2 / 3, or the shorthand ?level=3min / 10min / 30min */
+
+  function readLevel() {
+    var raw = (new URLSearchParams(location.search).get('level') || '').trim();
+    if (!raw) return 1;
+    if (/^all$/i.test(raw)) return 3;
+    var m = /^(\d+)/.exec(raw);
+    if (!m) return 1;
+    var n = parseInt(m[1], 10);
+    /* Minutes only when the value says so ("10min"), otherwise a bare
+       number is the level itself — so ?level=3 means level 3, not 3 min. */
+    if (/min/i.test(raw)) return n <= 3 ? 1 : (n <= 10 ? 2 : 3);
+    return Math.min(3, Math.max(1, n));
+  }
+
+  var level = readLevel();
+  var params = new URLSearchParams(location.search);
+
+  /* ---- Occasion line on the title slide ------------------------------
+     ?venue=Kristiansand&date=15 September 2026
+     Both optional; with neither, the title slide stays generic.
+  --------------------------------------------------------------------*/
+  (function () {
+    var bits = [params.get('venue'), params.get('date')].filter(Boolean);
+    if (bits.length) {
+      document.getElementById('occasion').innerHTML =
+        bits.join(', ').replace(/[<>]/g, '') + '<br>';
+    }
+  })();
+
+  /* ---- Local slot ----------------------------------------------------
+     ?place=<key> swaps the generic "where you are" slide for the host
+     institution, and highlights that city on the map. Add a key here to
+     make the deck local to a new place; nothing else needs to change.
+  --------------------------------------------------------------------*/
+  var LOCAL = {
+    uia: {
+      city: 'kristiansand',
+      kicker: 'here',
+      heading: 'MishMash in Kristiansand',
+      lead: 'The <strong>University of Agder</strong> is a MishMash partner — and carries more than its share of the centre.',
+      points: [
+        '<strong>Sunniva Whittaker</strong>, UiA’s rector, chairs the MishMash board.',
+        '<strong>Eirik Sørbø</strong> (UiA) leads <strong>WP4</strong>, on the creative use of AI in education.',
+        'Researchers across music, theology, engineering and media — from professors to PhD fellows.'
+      ],
+      people: [
+        { img: 'images/portraits/Sunniva_Whittaker_UiA.jpg', name: 'Sunniva Whittaker', role: 'board leader' },
+        { img: 'images/portraits/eirik_sorbo_UiA.jpg', name: 'Eirik Sørbø', role: 'WP4 lead' }
+      ],
+      notes: 'UiA is not a peripheral partner — the rector chairs the board, and WP4 on education is led from here. Name a few more people if you know who is in the room.'
+    }
+    /* Add more places here, e.g.
+       ntnu: { city: 'trondheim', heading: '…', lead: '…', points: […], people: […] }
+    */
+  };
+
+  (function () {
+    var key = (params.get('place') || '').toLowerCase();
+    var p = LOCAL[key];
+    if (!p) return;
+
+    if (p.kicker) document.getElementById('local-kicker').textContent = p.kicker;
+    if (p.heading) document.getElementById('local-heading').textContent = p.heading;
+    if (p.lead) document.getElementById('local-lead').innerHTML = p.lead;
+    if (p.notes) document.getElementById('local-notes').textContent = p.notes;
+
+    if (p.points) {
+      document.getElementById('local-points').innerHTML =
+        p.points.map(function (t) { return '<li>' + t + '</li>'; }).join('');
+    }
+
+    if (p.people && p.people.length) {
+      document.getElementById('local-visual').outerHTML =
+        '<div class="cols" id="local-visual">' + p.people.map(function (q) {
+          return '<figure style="margin:0"><img src="' + q.img + '" alt="' + q.name +
+                 '" style="width:100%;border:2px solid var(--mm-ink)">' +
+                 '<figcaption class="caption">' + q.name + ' — ' + q.role + '</figcaption></figure>';
+        }).join('') + '</div>';
+    }
+
+    /* Highlight the city on the map slide. */
+    if (p.city) {
+      var g = document.querySelector('[data-city="' + p.city + '"]');
+      if (g) {
+        g.querySelector('circle').setAttribute('class', 'here');
+        g.querySelector('circle').setAttribute('r', '11');
+        g.querySelector('text').setAttribute('class', 'hilite');
+      }
+    }
+  })();
+
+  document.querySelectorAll('.slides > section').forEach(function (s) {
+    var sl = parseInt(s.getAttribute('data-level') || '1', 10);
+    if (sl > level) s.remove();
+  });
+
+  /* Each divider sets the surface colour for the section that follows it,
+     so the kicker rules pick up the section's colour automatically. */
+  (function () {
+    var colour = null;
+    document.querySelectorAll('.slides > section').forEach(function (s) {
+      var bg = s.getAttribute('data-background-color');
+      if (bg) colour = bg;
+      if (colour) s.style.setProperty('--slide-colour', colour);
+    });
+  })();
+
+  var badge = document.getElementById('level-badge');
+  var current = LEVELS[level - 1];
+  badge.textContent = current.label;
+  badge.title = 'Talk length: ' + current.label + '. Click for the next one.';
+  badge.addEventListener('click', function () {
+    var next = (level % 3) + 1;
+    location.search = '?level=' + next;
+  });
+
+  /* ---- ?static=1 -------------------------------------------------
+     Replaces the two live embeds (the people network and the video)
+     with stills, for a room where the network is down or blocked.
+  --------------------------------------------------------------------*/
+  if (params.get('static') === '1') {
+    var netSlide = document.querySelector('.netwrap');
+    if (netSlide) {
+      netSlide.outerHTML =
+        '<img src="images/mm-institutions-network.jpg" alt="The MishMash network of institutions" ' +
+        'style="max-height:66vh;margin:0 auto;display:block;border:2px solid var(--mm-ink)">';
+    }
+    var vid = document.querySelector('.embed');
+    if (vid) {
+      vid.outerHTML =
+        '<img src="images/self-playing-guitars.jpg" alt="The self-playing guitars installation" ' +
+        'style="max-height:62vh;margin:0 auto;display:block;border:2px solid var(--mm-ink)">';
+    }
+  }
+
+  Reveal.initialize({
+    hash: true,
+    width: 1920, height: 1080, margin: 0.045,
+    minScale: 0.2, maxScale: 2.0,
+    slideNumber: 'c/t',
+    transition: 'fade',
+    controlsTutorial: false,
+    preloadIframes: true,
+    plugins: [RevealNotes]
+  });
+
+  /* The level badge is chrome, not content: hide it while printing. */
+  if (/print-pdf|print=1/.test(location.search)) badge.style.display = 'none';
+})();
+</script>
+</body>
+</html>
