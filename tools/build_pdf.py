@@ -105,8 +105,8 @@ def main():
             for i, addr in enumerate(addresses):
                 png = os.path.join(tmp, f"s{i:03d}.png")
                 print(f"  slide {i + 1}/{total}  ({addr})   ", end="\r", flush=True)
-                # fragments=all so a click-revealed slide prints complete
-                shoot(f"{base}print=1&fragments=all#/{addr}", png, args.budget)
+                # fragments=false so a click-revealed slide prints complete
+                shoot(f"{base}print=1&fragments=false#/{addr}", png, args.budget)
                 if os.path.exists(png):
                     pages.append(Image.open(png).convert("RGB"))
                 else:
