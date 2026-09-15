@@ -30,15 +30,16 @@ deliberately not on the screen. Press **S** for the speaker view.
 
 ## Structure
 
-Six questions, each opening on a full-bleed page in one of the identity's
+Seven questions, each opening on a full-bleed page in one of the identity's
 surface colours, cycling so that no two consecutive ones match:
 
 1. **Why?** — the mishmash of opinions about AI, the name, the definitions
-2. **What?** — create, explore, reflect; the seven work packages; the cube
-3. **Who?** — the consortium, the people network, how disciplines meet
-4. **Where?** — the map, the rhythm of a distributed centre
-5. **When?** — a five-year centre, caught near its start
-6. **Join** — MeshUp, membership, conferences
+2. **What?** — the objective in one sentence; create, explore, reflect
+3. **How?** — the cube, then one slide per work package
+4. **Who?** — the consortium, the people network, how disciplines meet
+5. **Where?** — the map, the rhythm of a distributed centre
+6. **When?** — a five-year centre, caught near its start
+7. **Join** — MeshUp, membership, conferences
 
 ## Adapting it for a particular talk
 
@@ -95,8 +96,8 @@ Display type is Roboto Condensed 700, body text is Inter, both self-hosted in
 stylesheet at the top of `index.html`.
 
 Each question page is one flat surface colour with nothing on it but the
-question. The six cycle through the four surfaces — purple, blue, pink, green,
-purple, blue — so no two consecutive pages match. That departs from the
+question. The seven cycle through the four surfaces — purple, blue, pink, green,
+purple, blue, pink — so no two consecutive pages match. That departs from the
 website's section-to-surface table in `BRAND.md`, which governs mishmash.no
 rather than a deck. Each question page also sets the accent colour for the
 slides under it, which shows as the rule beneath every heading.
