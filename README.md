@@ -10,33 +10,35 @@ so the embedded live pages work.
 
 ## Talk length
 
-The deck is progressive: every slide is tagged with a level, and slides above
-the chosen level are removed before the deck starts. The spine of the argument
-is the same at every length.
+The deck is one stack per question. The question page heads the stack and its
+slides hang below it, so how long the talk runs is decided by how far down you
+go — in the room, not in advance.
 
-| URL | Length | Slides |
-| --- | --- | --- |
-| `index.html` | ~3 min | 15 |
-| `index.html?level=2` | ~10 min | 27 |
-| `index.html?level=3` | ~30 min | 39 |
+- **→** skips to the next question
+- **↓** works through the one you are on
+- **Space** walks everything, down then right
 
-`?level=3min`, `?level=10min` and `?level=30min` work too, as does
-`?level=all`. The badge in the top right shows the current length; click it to
-cycle. Navigation and slide numbers are always correct for the level you chose,
-because the other slides are gone rather than hidden.
+Each stack is ordered by priority rather than by narrative, so the first **↓**
+is always the slide worth keeping at three minutes. Roughly: one down per
+question is three minutes, two or three is ten, all the way down is thirty.
+
+The readout in the top right names the question and how far down it you are
+("What? 3/9"). Press **Esc** for the overview — one column per question.
+
+Every slide has speaker notes, and they carry the sentences that are
+deliberately not on the screen. Press **S** for the speaker view.
 
 ## Structure
 
-Six questions, each opening on a full-bleed divider in its own surface colour:
+Six questions, each opening on a full-bleed page in one of the identity's
+surface colours, cycling so that no two consecutive ones match:
 
-1. **Why?** — the mishmash of opinions about AI, and where the name comes from
-2. **What?** — create, explore, reflect; the cube; the seven work packages
+1. **Why?** — the mishmash of opinions about AI, the name, the definitions
+2. **What?** — create, explore, reflect; the seven work packages; the cube
 3. **Who?** — the consortium, the people network, how disciplines meet
 4. **Where?** — the map, the rhythm of a distributed centre
 5. **When?** — a five-year centre, caught near its start
 6. **Join** — MeshUp, membership, conferences
-
-Every slide has speaker notes. Press **S** for the speaker view.
 
 ## Adapting it for a particular talk
 
@@ -49,7 +51,7 @@ default and takes what is local to a given talk from the URL.
 | `?place=uia` | Swaps the generic "where you are" slide for the host institution, and marks that city in red on the map |
 | `?static=1` | Replaces the two live embeds with stills, for a room with no working network |
 
-Combine them freely: `index.html?level=2&place=uia&venue=Kristiansand`.
+Combine them freely: `index.html?place=uia&venue=Kristiansand`.
 
 To make the deck local to a new place, add an entry to the `LOCAL` table near
 the foot of `index.html`:
@@ -57,7 +59,6 @@ the foot of `index.html`:
 ```js
 ntnu: {
   city: 'trondheim',                 // must match a data-city key on the map
-  kicker: 'here',
   heading: 'MishMash in Trondheim',
   lead: 'NTNU is a MishMash partner …',
   points: ['…', '…'],
@@ -93,18 +94,32 @@ Display type is Roboto Condensed 700, body text is Inter, both self-hosted in
 `fonts/`. Colour tokens are copied from `site/assets/css/brand.css` into the
 stylesheet at the top of `index.html`.
 
-Section dividers use the identity's surface colours with the wordmark in its
-paired colour — black on green, green on purple, yellow on blue, red on pink.
-Each divider also sets the accent colour for the slides that follow it.
+Each question page is one flat surface colour with nothing on it but the
+question. The six cycle through the four surfaces — purple, blue, pink, green,
+purple, blue — so no two consecutive pages match. That departs from the
+website's section-to-surface table in `BRAND.md`, which governs mishmash.no
+rather than a deck. Each question page also sets the accent colour for the
+slides under it, which shows as the rule beneath every heading.
 
 The figures carried over from earlier decks were recoloured from the superseded
 palette (`#A7A1F4`, `#C1F7AE`, `#363644`) to the 2026 tokens.
 
+## Title slide
+
+The wordmark is inlined (not linked) so that it works over `file://` and so
+CSS and script can reach inside it. `js/wordmark.js` is ported from
+mishmash.no: it rolls the I/A, S and H columns at random intervals like a
+split-flap board. Hovering the mark rolls all three and steps the slide to the
+next identity pairing — green/black, purple/green, blue/yellow, pink/red — so
+the surface and the wordmark always stay a legal pair. Anyone who has asked
+for reduced motion gets the mark held still.
+
 ## PDF
 
 ```
-python3 tools/build_pdf.py            # writes mishmash.pdf
-python3 tools/build_pdf.py --level 2  # just the ten-minute deck
+python3 tools/build_pdf.py                 # the whole deck
+python3 tools/build_pdf.py --place uia     # with the local slide filled in
+python3 tools/build_pdf.py --static        # with the offline stills
 ```
 
 It screenshots each slide with headless Chrome and assembles the pages with

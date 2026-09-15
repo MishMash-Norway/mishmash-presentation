@@ -227,6 +227,18 @@
 .split h3 { font-size: 1.3em; }
 .split ul { margin: 0 0 0 0.9em; }
 
+/* Highlight behind ink text. The pastels have too little contrast to be a text
+   colour (BRAND.md), but they are made for exactly this. */
+.hl {
+  padding: 0.02em 0.16em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.hl.green  { background: var(--mm-green); }
+.hl.purple { background: var(--mm-purple); }
+.hl.blue   { background: var(--mm-blue); }
+.hl.pink   { background: var(--mm-pink); }
+
 /* Definition list: term in the display face, definition beside it. */
 .defs { margin: 0; font-size: 0.86em; }
 .defs > div { display: grid; grid-template-columns: 7.5em 1fr; gap: 0 1.1em; align-items: baseline;
@@ -453,11 +465,9 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section>
-  <p class="huge" style="margin-top:.3em">MishMash will<br>
-  <span style="color:var(--mm-ink)">create</span>,
-  <span style="color:var(--mm-ink)">explore</span> and
-  <span style="color:var(--mm-ink)">reflect on</span><br>
-  AI <em>for</em>, <em>through</em> and <em>in</em><br>
+  <p class="huge" style="font-size:2.4em">MishMash will<br>
+  <span class="hl green">create</span>, <span class="hl green">explore</span> and <span class="hl green">reflect on</span><br>
+  AI <span class="hl purple">for</span>, <span class="hl purple">through</span> and <span class="hl purple">in</span><br>
   creative practices.</p>
   <aside class="notes">
   The whole centre in one sentence. Three verbs and three prepositions, and the prepositions matter.
@@ -915,7 +925,6 @@ MishMash is one of the national AI research centres funded by the Research Counc
   var LOCAL = {
     uia: {
       city: 'kristiansand',
-      kicker: 'here',
       heading: 'MishMash in Kristiansand',
       lead: 'The <strong>University of Agder</strong> is a MishMash partner.',
       points: [
@@ -939,7 +948,6 @@ MishMash is one of the national AI research centres funded by the Research Counc
     var p = LOCAL[key];
     if (!p) return;
 
-    if (p.kicker) document.getElementById('local-kicker').textContent = p.kicker;
     if (p.heading) document.getElementById('local-heading').textContent = p.heading;
     if (p.lead) document.getElementById('local-lead').innerHTML = p.lead;
     if (p.notes) document.getElementById('local-notes').textContent = p.notes;

@@ -4,9 +4,9 @@
 Screenshots every slide with headless Chrome at 1920x1080 and assembles the
 pages with Pillow. Run from anywhere:
 
-    python3 tools/build_pdf.py                 # the full 30-minute deck
-    python3 tools/build_pdf.py --level 2       # just the 10-minute deck
+    python3 tools/build_pdf.py                 # every slide, stacks included
     python3 tools/build_pdf.py --place uia     # with the local slide filled in
+    python3 tools/build_pdf.py --static        # with the offline stills
 
 The deck is served over HTTP rather than opened as file:// so that the
 self-hosted fonts and the embedded live pages behave the same as they do in a
@@ -34,12 +34,19 @@ CHROME = next((c for c in ("google-chrome", "chromium", "chromium-browser")
                if shutil.which(c)), None)
 
 
-def slide_count(level):
-    """How many slides survive the level filter — mirrors the deck's own rule."""
+def slide_addresses():
+    """Every slide as an "h" or "h/v" address, in the order Space walks them."""
     html = open(INDEX, encoding="utf8").read()
-    body = html.split('<div class="slides">', 1)[1]
-    levels = re.findall(r'<section[^>]*data-level="(\d)"', body)
-    return sum(1 for l in levels if int(l) <= level)
+    body = html.split('<div class="slides">', 1)[1].rsplit("</div>\n</div>", 1)[0]
+    tops = re.findall(r"\n<section(?:\s[^>]*)?>.*?\n</section>", body, re.S)
+    out = []
+    for h, top in enumerate(tops):
+        kids = re.findall(r"<section[^>]*>(?:(?!<section).)*?</section>", top, re.S)
+        if len(kids) > 1:
+            out += [f"{h}/{v}" for v in range(len(kids))]
+        else:
+            out.append(str(h))
+    return out
 
 
 def serve(directory):
@@ -66,8 +73,6 @@ def shoot(url, out, budget):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--level", type=int, default=3, choices=(1, 2, 3),
-                    help="talk length: 1=3min, 2=10min, 3=30min (default 3)")
     ap.add_argument("--place", default=None, help="a key from the LOCAL table")
     ap.add_argument("--static", action="store_true",
                     help="use the offline stills instead of the live embeds")
@@ -79,25 +84,29 @@ def main():
     if CHROME is None:
         sys.exit("No Chrome or Chromium found on PATH.")
 
-    total = slide_count(args.level)
-    out = args.out or os.path.join(PRES, f"mishmash-level{args.level}.pdf")
+    addresses = slide_addresses()
+    total = len(addresses)
+    out = args.out or os.path.join(PRES, "mishmash.pdf")
 
-    query = {"level": args.level}
+    query = {}
     if args.place:
         query["place"] = args.place
     if args.static:
         query["static"] = "1"
 
     port, shutdown = serve(PRES)
-    base = f"http://127.0.0.1:{port}/index.html?{urlencode(query)}"
+    qs = urlencode(query)
+    base = f"http://127.0.0.1:{port}/index.html?{qs}&" if qs else \
+           f"http://127.0.0.1:{port}/index.html?"
 
     pages = []
     with tempfile.TemporaryDirectory() as tmp:
         try:
-            for i in range(total):
+            for i, addr in enumerate(addresses):
                 png = os.path.join(tmp, f"s{i:03d}.png")
-                print(f"  slide {i + 1}/{total}", end="\r", flush=True)
-                shoot(f"{base}&print=1#/{i}", png, args.budget)
+                print(f"  slide {i + 1}/{total}  ({addr})   ", end="\r", flush=True)
+                # fragments=all so a click-revealed slide prints complete
+                shoot(f"{base}print=1&fragments=all#/{addr}", png, args.budget)
                 if os.path.exists(png):
                     pages.append(Image.open(png).convert("RGB"))
                 else:
