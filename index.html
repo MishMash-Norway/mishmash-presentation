@@ -363,12 +363,22 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 @keyframes mm-join-right { 0%, 6% { transform: translateX(55px);  } 28%, 100% { transform: translateX(0); } }
 .bubbles.joining .g-humans   { animation: mm-join-left  6.8s cubic-bezier(.4, 0, .2, 1) infinite; }
 .bubbles.joining .g-machines { animation: mm-join-right 6.8s cubic-bezier(.4, 0, .2, 1) infinite; }
-@keyframes mm-join-lens { 0%, 24% { opacity: 0; } 34%, 100% { opacity: 1; } }
-.bubbles.joining .join-lens { animation: mm-join-lens 6.8s linear infinite; }
+/* The intersection travels with the circles, so it grows from nothing as
+   they start to move. Its clip is the humans circle, so the clipped group rides
+   that journey, and the machines circle inside it carries the rest: -55 + 110
+   at the start, 0 + 0 at the end, which is the machines' own path. */
+.bubbles.joining .join-clip  { animation: mm-join-left  6.8s cubic-bezier(.4, 0, .2, 1) infinite; }
+@keyframes mm-join-inner { 0%, 6% { transform: translateX(110px); } 28%, 100% { transform: translateX(0); } }
+.bubbles.joining .join-lens  { animation: mm-join-inner 6.8s cubic-bezier(.4, 0, .2, 1) infinite; }
+/* The label needs the full width of the lens, so it fades in as the circles settle. */
+@keyframes mm-join-label { 0%, 20% { opacity: 0; } 30%, 100% { opacity: 1; } }
+.bubbles.joining .join-label { animation: mm-join-label 6.8s linear infinite; }
 @media (prefers-reduced-motion: reduce) {
   .bubbles.joining .g-humans,
   .bubbles.joining .g-machines,
-  .bubbles.joining .join-lens { animation: none; }
+  .bubbles.joining .join-clip,
+  .bubbles.joining .join-lens,
+  .bubbles.joining .join-label { animation: none; }
 }
 
 /* The disciplinarity figure is inlined rather than linked, so that each of the
@@ -638,13 +648,14 @@ MishMash is one of the national AI research centres funded by the Research Counc
 
   <section class="center">
   <div class="bubbles joining">
-  <svg viewBox="0 0 460 320" role="img" aria-label="Two circles, humans and machines, moving together until they overlap">
+  <svg viewBox="0 0 460 320" role="img" aria-label="Two circles, humans and machines, moving together until they overlap, with MishMash where they meet">
   <defs><clipPath id="join-clip" clipPathUnits="userSpaceOnUse"><circle cx="170" cy="160" r="110"/></clipPath></defs>
   <g class="g-humans"><circle class="c-humans" cx="170" cy="160" r="110"/><text class="lbl on-surface" x="110" y="165">Humans</text></g>
   <g class="g-machines"><circle class="c-machines" cx="290" cy="160" r="110"/><text class="lbl on-surface" x="350" y="165">Machines</text></g>
-  <!-- The intersection. Its geometry is the settled position, so it fades in
-       as the circles arrive rather than travelling with them. -->
-  <circle class="c-lens join-lens" cx="290" cy="160" r="110" clip-path="url(#join-clip)"/>
+  <!-- The intersection: the machines circle clipped to the humans circle, both
+       moving, so it appears the moment the circles start to overlap. -->
+  <g class="join-clip" clip-path="url(#join-clip)"><circle class="c-lens join-lens" cx="290" cy="160" r="110"/></g>
+  <text class="lbl lens join-label" x="230" y="165">MishMash</text>
   </svg>
   </div>
   <aside class="notes">
