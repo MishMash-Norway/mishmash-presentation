@@ -396,6 +396,14 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 
 /* A figure built up in layers: the first image sets the size, the others sit
    exactly on top of it and arrive as fragments. */
+/* Full-screen photograph with a small caption box: a label and one line. */
+.capbox {
+  position: absolute; left: 0; bottom: 0;
+  background: var(--mm-white); border: 2px solid var(--mm-ink);
+  padding: .45em .8em .55em; max-width: 15em;
+}
+.capbox .cap-title { font-family: var(--mm-font-display); font-size: 1.25em; line-height: 1; margin: 0 0 .2em; }
+.capbox p { margin: 0; font-size: .8em; line-height: 1.25; }
 .layers { position: relative; margin: 0 auto; }
 .reveal .layers img { display: block; width: 100%; height: auto; max-height: none; margin: 0; }
 .reveal .layers img + img { position: absolute; left: 0; top: 0; }
@@ -700,22 +708,24 @@ MishMash is one of the national AI research centres funded by the Research Counc
 
     <section>
   <h2>Why start with the arts?</h2>
-  <div class="cols3" style="margin-top:.7em">
+  <div class="cols3" style="margin-top:.7em;grid-template-columns:repeat(4,1fr)">
   <div class="card green fragment"><p>Artistic use breaks systems in novel ways.</p></div>
   <div class="card purple fragment"><p>Authorship, consent and ownership is engrained in artistic practice.</p></div>
   <div class="card pink fragment"><p>A performance or an exhibition engages broad audiences by design.</p></div>
+  <div class="card blue fragment"><p>Humans are multimodal: we learn through sound, image and movement, not text alone.</p></div>
   </div>
   <aside class="notes">
   This is the strategic bet of the centre. Not "AI applied to art", but art as the method for interrogating AI.
   If you work on AI anywhere else, the creative sector is a good place to look for the failure modes, and for the methods that keep people in control.
   Artists have been putting these systems under pressure since the 1950s — they find the edges first. Artistic exploration is our entry point for critical discussion about AI.
+  And humans are multimodal. We learn language by hearing, seeing and moving long before we read, and the arts have always worked across sound, image and movement. That is where AI is heading too, beyond text.
   </aside>
   </section>
 
   <section>
   <h2>A testbed for other sectors</h2>
   <img src="images/fig-risk-exploration.svg" style="display:block;margin:0 auto;max-height:62vh" alt="Fields placed by the cost of an error against the room to explore, from art at the top left to transport, health, energy and defence at the bottom right, with an arrow from art to the high-risk fields">
-  <aside class="notes">Why collaboration across sectors makes sense. Artistic exploration lets us develop and explore widely: a mistake in a piece of music is harmless, a mistake in a diagnosis or a vehicle is not. Art and culture can therefore be a testbed for methods that more risk-aware fields, such as health, transport and defence, cannot try first. The placing of the fields is a judgement for the argument, not a measurement.</aside>
+  <aside class="notes">Why collaboration across sectors makes sense. Artistic exploration lets us develop and explore widely: a mistake in a piece of music is harmless, a mistake in a diagnosis or a vehicle is not. Art and culture can therefore be a testbed for methods that more risk-aware fields, such as health, transport and defence, cannot try first. It is the last line of the promise column: methods that travel out of the arts. The placing of the fields is a judgement for the argument, not a measurement.</aside>
   </section>
 
 </section>
@@ -770,6 +780,19 @@ MishMash is one of the national AI research centres funded by the Research Counc
   "Novel and meaningful" is a demanding pair: a random generator is novel and not meaningful; a copy is meaningful and not novel.
   The open question is not whether a machine can be creative in the abstract, but how human and machine creativity differ — and that is what CoCreative AI is about: partnership rather than replacement.
   Creativity is a fundamental human trait. It has shaped technology, and been shaped by it, for as long as there has been technology.
+  </aside>
+  </section>
+
+  <section>
+  <h2>AI is not one thing</h2>
+  <div class="layers" style="max-width:80%">
+  <img class="fig" src="images/fig-ai-kinds-1.svg" alt="Five kinds of system side by side: rules, search, language models, image models and sound models">
+  <img class="fig fragment" src="images/fig-ai-kinds-2.svg" alt="The three model kinds marked as generative AI">
+  <img class="fig fragment" src="images/fig-ai-kinds-3.svg" alt="An agent below, linked to all five, that uses several of them as tools">
+  </div>
+  <aside class="notes">
+  "AI" is used about very different systems. Rule-based systems and search have been with us for decades. (Click.) Generative AI is the models that make new text, images or sound. (Click.) And an agent is not a new kind of model, but a system that uses several of these as tools, generative and rule-based alike.
+  They raise different questions about copyright, privacy, compute and responsibility. When a strategy or a regulation says "AI", it is often unclear which of them it means.
   </aside>
   </section>
 
@@ -928,6 +951,11 @@ MishMash is one of the national AI research centres funded by the Research Counc
   Counted from mishmash.no. The institutes are SINTEF, Simula, IFE, NILU and NORSUS; partners range from the National Museum to festivals, music organisations and companies.
     Not only universities: the research institutes are SINTEF, Simula, IFE, NILU and NORSUS; the public sector brings the National Library, museums and the broadcaster; and then the creative industries — festivals, labels, film, games, rights organisations — and the freelancers. In this sector a "user partner" can be one person with a practice, which is why we work through residencies and seed funding as well as PhDs.
   </aside>
+  </section>
+
+  <section data-background-image="images/mm-kristiansand-group.jpg" data-background-size="cover" data-background-position="center">
+  <div class="capbox fragment" style="position:fixed;top:40px;bottom:auto;left:40px;right:auto;margin:0"><p class="cap-title">MishMash, Kristiansand, September 2026</p><p>Researchers, artists, teachers and companies from the whole country.</p></div>
+  <aside class="notes">This is MishMash: the participants at the opening conference in Kilden, Kristiansand, in September 2026. Universities, art academies, cultural institutions and companies from Tromsø to Kristiansand. The photo says more about the size of the collaboration than any number on a slide. Photo: Hadle Kloster (UiA).</aside>
   </section>
 
   <section data-force-light>
