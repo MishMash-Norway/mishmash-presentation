@@ -253,6 +253,9 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 .grid4 img, .grid7 img { width: 100%; height: 26vh; object-fit: cover; display: block; border: 2px solid var(--mm-ink); max-height: none; }
 .grid7 img { height: 21vh; }
 .grid4 figcaption, .grid7 figcaption { font-size: 0.44em; color: var(--mm-ink-70); margin-top: 0.25em; line-height: 1.25; }
+.grid7.big { row-gap: 0.4em; }
+.grid7.big img { height: 27vh; }
+.grid7.big figcaption { font-size: 0.62em; color: var(--mm-ink); font-family: var(--mm-font-display); }
 
 /* Headline collage — flat squares, no rotation, no shadows */
 .collage { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 100%; }
@@ -407,6 +410,25 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 .layers { position: relative; margin: 0 auto; }
 .reveal .layers img { display: block; width: 100%; height: auto; max-height: none; margin: 0; }
 .reveal .layers img + img { position: absolute; left: 0; top: 0; }
+
+/* Small models and a Norwegian model, why a Norwegian model, and four values. From the deck for
+   Musikk i skolen, 30 October 2026. */
+.links { position:relative; width:1500px; height:760px; margin:0 auto; }
+.links .dot { position:absolute; width:300px; height:300px; border-radius:50%; border:5px solid var(--mm-ink); display:flex; align-items:center; justify-content:center; text-align:center; font-family:var(--mm-font-display); font-size:.95em; line-height:1.05; box-sizing:border-box; padding:.4em; }
+.links .open { width:460px; height:460px; flex-direction:column; font-size:1.25em; }
+.links svg { position:absolute; inset:0; }
+.links .arrow-label { position:absolute; width:400px; text-align:center; font-family:var(--mm-font-display); font-size:1em; }
+.links .open span { display:block; font-family:inherit; font-size:.62em; margin-top:.3em; }
+.models-row { display:flex; align-items:center; justify-content:center; gap:2.2em; margin-top:.4em; }
+.mcircle { border:5px solid var(--mm-ink); border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-family:var(--mm-font-display); color:var(--mm-ink); box-sizing:border-box; }
+.mcircle.small { width:330px; height:330px; font-size:.85em; } .mcircle.big { width:560px; height:560px; font-size:1.4em; }
+.mcircle p { margin:.15em 0; line-height:1.05; } .mcircle span { font-size:.7em; }
+.mcircle .mods { display:flex; gap:.35em; margin:.3em 0; }
+.values { display:flex; justify-content:center; gap:1.6em; margin-top:2.2em; }
+.values .vcell { text-align:center; font-family:var(--mm-font-display); font-size:1.05em; }
+html.dark .mcircle, html.dark .links .dot, html.dark .values .vicon { color:#231f20 !important; }
+.values .vicon { width:280px; height:280px; border-radius:36px; border:4px solid var(--mm-ink); display:flex; align-items:center; justify-content:center; margin:0 auto .3em; }
+.reveal p.midline { position:absolute; left:0; right:0; bottom:40px; text-align:center; font-family:var(--mm-font-display); font-size:1.3em; margin:0; }
 
 /* Data + algorithm = model -> tool, each term growing its examples on click. From the deck for
    Musikk i skolen, 30 October 2026. */
@@ -761,6 +783,25 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section>
+  <h2>The arts connect the school subjects</h2>
+  <div class="layers" style="width:40%">
+  <img class="fig" src="images/fig-arts-subjects-0.svg" alt="The arts in a circle">
+  <img class="fig fragment" src="images/fig-arts-subjects-1.svg" alt="Mathematics, connected to the arts">
+  <img class="fig fragment" src="images/fig-arts-subjects-2.svg" alt="Science, connected to the arts">
+  <img class="fig fragment" src="images/fig-arts-subjects-3.svg" alt="Programming, connected to the arts">
+  <img class="fig fragment" src="images/fig-arts-subjects-4.svg" alt="Norwegian, connected to the arts">
+  <img class="fig fragment" src="images/fig-arts-subjects-5.svg" alt="Languages, connected to the arts">
+  <img class="fig fragment" src="images/fig-arts-subjects-6.svg" alt="Social studies, connected to the arts">
+  <img class="fig fragment" src="images/fig-arts-subjects-7.svg" alt="Music, connected to the arts">
+  <img class="fig fragment" src="images/fig-arts-subjects-8.svg" alt="Physical education, connected to the arts">
+  </div>
+  <aside class="notes">
+  In school, the arts are not one subject among many but a meeting point (click for each): mathematics in rhythm, proportion and pattern; science in sound, light and materials; programming in interactive works; Norwegian and other languages in text, voice and storytelling; social studies in culture and society; music as one of the art forms; and physical education in movement and dance.
+  That is also why AI in education is a question for the arts and not only for ICT: the arts are where pupils make things with their bodies and with others, and where the process matters more than the product.
+  </aside>
+  </section>
+
+  <section>
   <h2>A testbed for other sectors</h2>
   <img src="images/fig-risk-exploration.svg" style="display:block;margin:0 auto;max-height:62vh" alt="Fields placed by the cost of an error against the room to explore, from art at the top left to transport, health, energy and defence at the bottom right, with an arrow from art to the high-risk fields">
   <aside class="notes">Why collaboration across sectors makes sense. Artistic exploration lets us develop and explore widely: a mistake in a piece of music is harmless, a mistake in a diagnosis or a vehicle is not. Art and culture can therefore be a testbed for methods that more risk-aware fields, such as health, transport and defence, cannot try first. It is the last line of the promise column: methods that travel out of the arts. The placing of the fields is a judgement for the argument, not a measurement.</aside>
@@ -835,6 +876,24 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section>
+  <h2>From bots to autonomous systems</h2>
+  <div class="layers" style="max-width:82%">
+  <img class="fig" src="images/fig-ai-types-0.svg" alt="Two axes: complexity along, autonomy up">
+  <img class="fig fragment" src="images/fig-ai-types-1.svg" alt="Bots">
+  <img class="fig fragment" src="images/fig-ai-types-2.svg" alt="Chatbots">
+  <img class="fig fragment" src="images/fig-ai-types-3.svg" alt="Assistants">
+  <img class="fig fragment" src="images/fig-ai-types-4.svg" alt="Agents">
+  <img class="fig fragment" src="images/fig-ai-types-5.svg" alt="Multi-agent systems">
+  <img class="fig fragment" src="images/fig-ai-types-6.svg" alt="Autonomous systems">
+  <img class="fig fragment" src="images/fig-ai-types-hitl.svg" alt="A person with arrows in a loop through the line: the human in the loop">
+  </div>
+  <aside class="notes">
+  Another way to see that AI is not one thing: six kinds of system, one per click, from simple bots via chatbots and assistants to agents that carry out tasks, systems of many agents, and fully autonomous systems. Complexity and independence grow upwards. Most of the debate is about the chatbots in the middle, and that is also what most artists, students and teachers meet today, but we will live with all six.
+  (Click.) Whatever the type, the human has to be in the loop: we give the task, look at the result, correct and try again. The more independent the system, the more it matters that people learn to be the ones who steer the loop. In artistic work that is the whole point: the artist decides what has value.
+  </aside>
+  </section>
+
+  <section>
   <h2>Data + algorithm = model</h2>
   <div class="equation">
   <span class="term green fragment algo" data-fragment-index="2">Data<span class="srcs three">
@@ -881,6 +940,28 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </aside>
   </section>
 
+  <section>
+  <p class="lhead" style="text-align:center;font-family:var(--mm-font-display);font-size:1.4em;margin:.2em 0 .3em">MishMash works for</p>
+  <div class="models-row">
+  <div class="mcircle small fragment" data-fragment-index="1" style="background:var(--mm-blue)"><svg class="picto " width="110" height="110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M11 4h2"/><path d="M12 17v.01"/></svg><p>Small models<br><span>on small devices</span></p></div>
+  <div class="mcircle big fragment" data-fragment-index="2" style="background:var(--mm-green)"><p>A Norwegian<br>model</p><div class="mods"><span class="fragment" data-fragment-index="3"><svg class="picto " width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h10"/></svg></span><span class="fragment" data-fragment-index="3"><svg class="picto " width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M9 17v-13h10v13"/><path d="M9 8h10"/></svg></span><span class="fragment" data-fragment-index="3"><svg class="picto " width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 8h.01"/><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/></svg></span><span class="fragment" data-fragment-index="3"><svg class="picto " width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5 -3v10l-5 -3z"/></svg></span></div><p><span class="fragment" data-fragment-index="3">multimodal</span></p></div>
+  </div>
+  <aside class="notes">MishMash works for two things that may seem opposites. (Click.) Small models that can run on small devices: a phone, a laptop, a microcontroller in an instrument or an installation, with no network and without sending anyone's data anywhere. (Click.) And a large Norwegian model, (click) multimodal: trained on Norwegian text, sound, images and film, with licensed content, so that we know what it has learnt from.</aside>
+  </section>
+  <section data-depth="more">
+  <div class="links" role="img" aria-label="Three large circles side by side: language and culture, independence and transparency.">
+  <div class="dot open fragment" style="left:0;top:120px;background:var(--mm-green)">Language and culture</div>
+  <div class="dot open fragment" style="left:520px;top:120px;background:var(--mm-blue)">Independence</div>
+  <div class="dot open fragment" style="left:1040px;top:120px;background:var(--mm-purple)">Transparency</div>
+  </div>
+  <p class="midline">Why a Norwegian model?</p>
+  <aside class="notes">Why does Norway need a model of its own? Three reasons (click for each). Language and culture: the large models are poor at Nynorsk, helpless at Sámi, and know little about Norwegian art, music and film. Independence: the models artists, schools and institutions use today are owned by companies in the USA and China, and can change their terms or disappear tomorrow. Transparency: we cannot open them, and we do not know what they have learnt from. That is also why we ask the government for a Norwegian model trained on Norwegian content, where those who made the content are paid.</aside>
+  </section>
+  <section>
+  <div class="values" role="img" aria-label="Four pictograms: a padlock for privacy, a copyright sign for copyright, people for diversity and a leaf for sustainability."><div class="vcell fragment"><div class="vicon" style="color:var(--mm-ink);background:var(--mm-pink)"><svg class="picto " width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11v-4a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1"/></svg></div><p>Privacy</p></div><div class="vcell fragment"><div class="vicon" style="color:var(--mm-ink);background:var(--mm-purple)"><svg class="picto " width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"/></svg></div><p>Copyright</p></div><div class="vcell fragment"><div class="vicon" style="color:var(--mm-ink);background:var(--mm-green)"><svg class="picto " width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="9" r="2"/><circle cx="12" cy="6.5" r="2.5"/><circle cx="18.5" cy="9" r="2"/><path d="M2.5 19v-1.5a3 3 0 0 1 6 0v1.5"/><path d="M8 19v-2.5a4 4 0 0 1 8 0v2.5"/><path d="M15.5 19v-1.5a3 3 0 0 1 6 0v1.5"/></svg></div><p>Diversity</p></div><div class="vcell fragment"><div class="vicon" style="color:var(--mm-ink);background:var(--mm-blue)"><svg class="picto " width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21c.5 -4.5 2.5 -8 7 -10"/><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"/></svg></div><p>Sustainability</p></div></div>
+  <aside class="notes">Four things we have to keep in focus (click for each). Privacy: people's voices, faces, movements and data. Copyright: our own and others', what artists and students make and what the models are trained on. Diversity: models that know Nynorsk, Sámi, dialects and art from the whole world, not only what sells best. And sustainability: large models use a lot of energy, small ones little.</aside>
+  </section>
+
       </section>
 
 <!-- ================== HOW ================== -->
@@ -905,6 +986,22 @@ MishMash is one of the national AI research centres funded by the Research Counc
   The top face: the three approaches. Create means building systems and works; explore means trying them out in performances, classrooms, clinics and museums; reflect means the ethical, legal, cultural and societal questions. Every work package does all three.
   The side face: the three perspectives. Machines — what can these systems actually do, and why? Data, models, limits. Humans — how do we create with them? Agency, skill, bodies, craft. Society — what changes when they enter the world? Authorship, law, economy, education.
   Many disagreements about AI are really disagreements about which of the three you are talking about. Cross-cutting workshops are organised along these two axes, so the work packages are not silos. A structured mesh, built out of the mishmash.
+  </aside>
+  </section>
+
+  <section>
+  <h2>Seven work packages</h2>
+  <div class="grid7 big" role="img" aria-label="Seven photographs, one for each work package">
+  <figure class="fragment"><img src="images/wp1-erdem-rhyglyph.jpg" alt=""><figcaption>Performances</figcaption></figure>
+  <figure class="fragment"><img src="images/wp2-solbakken-vigeland.jpg" alt=""><figcaption>Artistic processes</figcaption></figure>
+  <figure class="fragment"><img src="images/wp3-bergsland-pose.jpg" alt=""><figcaption>Health and well-being</figcaption></figure>
+  <figure class="fragment"><img src="images/wp4-sorbo-teachers.png" alt=""><figcaption>Education</figcaption></figure>
+  <figure class="fragment"><img src="images/wp5-eidsvold-copyright.png" alt=""><figcaption>Cultural and creative industries</figcaption></figure>
+  <figure class="fragment"><img src="images/wp6-lartillot-music-analysis.jpg" alt=""><figcaption>Cultural heritage</figcaption></figure>
+  <figure class="fragment"><img src="images/wp7-nordby-openbridge.png" alt=""><figcaption>Creative problem-solving</figcaption></figure>
+  </div>
+  <aside class="notes">
+  The centre has seven work packages, here with one photograph from each, one per click: artistic performances, artistic processes, health and well-being, education, the cultural and creative industries, cultural heritage, and creative problem-solving. The slides below take them one at a time.
   </aside>
   </section>
 

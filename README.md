@@ -22,9 +22,9 @@ Press **Esc** to get an overview of all the slides. **S** gives you speaker view
 
 Seven questions, each opening on a full-bleed page in one of the identity's surface colours, cycling so that no two consecutive ones match:
 
-1. **Why?** — the mishmash of opinions about AI, the name, why start with the arts, what the arts influence beyond art, a testbed for other sectors
-2. **What?** — the objective in one sentence; create, explore, reflect; the definitions; AI is not one thing; data + algorithm = model, and the model inside many tools
-3. **How?** — the cube, then one slide per work package
+1. **Why?** — the mishmash of opinions about AI, the name, why start with the arts, what the arts influence beyond art, how the arts connect the school subjects, a testbed for other sectors
+2. **What?** — the objective in one sentence; create, explore, reflect; the definitions; AI is not one thing; from bots to autonomous systems, with the human in the loop; data + algorithm = model, and the model inside many tools; small models and a Norwegian model; why a Norwegian model; four values
+3. **How?** — the cube, the seven work packages in photographs, then one slide per work package
 4. **Who?** — the consortium, the people network, how disciplines meet
 5. **Where?** — the map, the rhythm of a distributed centre
 6. **When?** — a five-year centre, caught near its start
@@ -71,4 +71,4 @@ MIT (see `LICENSE`). Note that the photographs, logos and figures are not covere
 
 ## Figures
 
-The figures are drawn by scripts in `tools/` and are regenerated, not edited by hand: `python3 tools/make_ai_kinds.py` (AI is not one thing) and `python3 tools/make_arts_impacts.py` (what the arts influence). The data + algorithm = model slide is HTML and CSS, adapted with the impacts figure from the Musikk i skolen deck of 30 October 2026, with the arts in place of music.
+The figures are drawn by scripts in `tools/` and are regenerated, not edited by hand: `python3 tools/make_ai_kinds.py` (AI is not one thing), `python3 tools/make_ai_types.py` (from bots to autonomous systems, split from `images/ai-types-autonomy.svg`, whose labels are edited there) and `python3 tools/make_arts_figures.py` (the arts and the school subjects; what the arts influence). These, and the HTML slides on data + algorithm = model, the two kinds of model, why a Norwegian model, the four values and the seven work packages, are adapted from the Musikk i skolen deck of 30 October 2026, in English and with the arts in place of music.
