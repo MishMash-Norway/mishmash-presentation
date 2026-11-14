@@ -22,8 +22,8 @@ Press **Esc** to get an overview of all the slides. **S** gives you speaker view
 
 Seven questions, each opening on a full-bleed page in one of the identity's surface colours, cycling so that no two consecutive ones match:
 
-1. **Why?** — the mishmash of opinions about AI, the name, the definitions
-2. **What?** — the objective in one sentence; create, explore, reflect
+1. **Why?** — the mishmash of opinions about AI, the name, why start with the arts, what the arts influence beyond art, a testbed for other sectors
+2. **What?** — the objective in one sentence; create, explore, reflect; the definitions; AI is not one thing; data + algorithm = model, and the model inside many tools
 3. **How?** — the cube, then one slide per work package
 4. **Who?** — the consortium, the people network, how disciplines meet
 5. **Where?** — the map, the rhythm of a distributed centre
@@ -68,3 +68,7 @@ It screenshots each slide with headless Chrome and assembles the pages with Pill
 ## Licence
 
 MIT (see `LICENSE`). Note that the photographs, logos and figures are not covered by it; they belong to MishMash and its partners.
+
+## Figures
+
+The figures are drawn by scripts in `tools/` and are regenerated, not edited by hand: `python3 tools/make_ai_kinds.py` (AI is not one thing) and `python3 tools/make_arts_impacts.py` (what the arts influence). The data + algorithm = model slide is HTML and CSS, adapted with the impacts figure from the Musikk i skolen deck of 30 October 2026, with the arts in place of music.

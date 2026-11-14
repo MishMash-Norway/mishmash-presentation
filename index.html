@@ -408,6 +408,25 @@ html.dark .disc svg polygon { fill: var(--mm-ink); }
 .reveal .layers img { display: block; width: 100%; height: auto; max-height: none; margin: 0; }
 .reveal .layers img + img { position: absolute; left: 0; top: 0; }
 
+/* Data + algorithm = model -> tool, each term growing its examples on click. From the deck for
+   Musikk i skolen, 30 October 2026. */
+.equation { display:flex; align-items:center; justify-content:center; gap:.35em; font-family:var(--mm-font-display); font-size:1.4em; margin-top:2.9em; }
+.equation .srcs.three { grid-template-columns:auto auto auto; }
+.equation .srcs.three .src-arrow { grid-column:1 / span 3; }
+.equation .term { padding:.35em .6em; border:4px solid var(--mm-ink); color:#231f20; }
+.equation .term.green { background:var(--mm-green); }
+.equation .term.blue { background:var(--mm-blue); }
+.equation .term.pink { background:var(--mm-pink); }
+.equation .term.purple { background:var(--mm-purple); }
+.equation .eq-arrow { font-size:1.1em; }
+.equation .tool { border:3px solid var(--mm-ink); border-radius:2em; padding:.3em .9em; white-space:nowrap; color:#231f20; }
+.equation .tool.green { background:var(--mm-green); } .equation .tool.blue { background:var(--mm-blue); }
+.equation .tool.purple { background:var(--mm-purple); } .equation .tool.pink { background:var(--mm-pink); }
+.equation .algo { position:relative; }
+.equation .srcs { position:absolute; bottom:calc(100% + .2em); left:50%; transform:translateX(-50%); display:grid; grid-template-columns:auto auto; justify-items:center; gap:.25em .3em; font-size:.45em; }
+.equation .srcs .src-arrow { font-size:2em; line-height:1; grid-column:1 / span 2; order:99; }
+.equation .algs { position:absolute; top:calc(100% + .4em); left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.25em; font-size:.45em; }
+
 /* A quotation: a bar in the section's colour rather than quotation marks. */
 .quote {
   font-size: 1.12em;
@@ -723,6 +742,25 @@ MishMash is one of the national AI research centres funded by the Research Counc
   </section>
 
   <section>
+  <h2>The arts influence far more than art</h2>
+  <div class="layers" style="max-width:82%">
+  <img class="fig" src="images/fig-arts-impacts-0.svg" alt="The arts in a circle">
+  <img class="fig fragment" src="images/fig-arts-impacts-1.svg" alt="Arrow from the arts to motor">
+  <img class="fig fragment" src="images/fig-arts-impacts-2.svg" alt="Arrow from the arts to health">
+  <img class="fig fragment" src="images/fig-arts-impacts-3.svg" alt="Arrow from the arts to emotional">
+  <img class="fig fragment" src="images/fig-arts-impacts-4.svg" alt="Arrow from the arts to cognitive">
+  <img class="fig fragment" src="images/fig-arts-impacts-5.svg" alt="Arrow from the arts to linguistic">
+  <img class="fig fragment" src="images/fig-arts-impacts-6.svg" alt="Arrow from the arts to aesthetic">
+  <img class="fig fragment" src="images/fig-arts-impacts-7.svg" alt="Arrow from the arts to social">
+  <img class="fig fragment" src="images/fig-arts-impacts-8.svg" alt="Arrow from the arts to cultural">
+  </div>
+  <aside class="notes">
+  The arts work on much more than art (click for each area), from the body outwards. Motor: fine motor skills and coordination, timing and rhythm in the body. Health: art and music are used to regulate stress, breathing and movement. Emotional: recognising and expressing feelings. Cognitive: attention, memory and pattern recognition. Linguistic: listening, pronunciation and the rhythm of language, and new vocabularies for what we see and hear. Aesthetic: experiencing and making something of value. Social: making and performing together builds community and collaboration. Cultural: belonging, and meeting other cultures.
+  This is why it matters what AI does to the arts: when the process is handed to a machine, these effects go with it. The effects are well documented for music; for the other art forms the picture is similar but less measured.
+  </aside>
+  </section>
+
+  <section>
   <h2>A testbed for other sectors</h2>
   <img src="images/fig-risk-exploration.svg" style="display:block;margin:0 auto;max-height:62vh" alt="Fields placed by the cost of an error against the room to explore, from art at the top left to transport, health, energy and defence at the bottom right, with an arrow from art to the high-risk fields">
   <aside class="notes">Why collaboration across sectors makes sense. Artistic exploration lets us develop and explore widely: a mistake in a piece of music is harmless, a mistake in a diagnosis or a vehicle is not. Art and culture can therefore be a testbed for methods that more risk-aware fields, such as health, transport and defence, cannot try first. It is the last line of the promise column: methods that travel out of the arts. The placing of the fields is a judgement for the argument, not a measurement.</aside>
@@ -793,6 +831,53 @@ MishMash is one of the national AI research centres funded by the Research Counc
   <aside class="notes">
   "AI" is used about very different systems. Rule-based systems and search have been with us for decades. (Click.) Generative AI is the models that make new text, images or sound. (Click.) And an agent is not a new kind of model, but a system that uses several of these as tools, generative and rule-based alike.
   They raise different questions about copyright, privacy, compute and responsibility. When a strategy or a regulation says "AI", it is often unclear which of them it means.
+  </aside>
+  </section>
+
+  <section>
+  <h2>Data + algorithm = model</h2>
+  <div class="equation">
+  <span class="term green fragment algo" data-fragment-index="2">Data<span class="srcs three">
+  <span class="tool green fragment" data-fragment-index="4">Text</span>
+  <span class="tool green fragment" data-fragment-index="5">Numbers</span>
+  <span class="tool green fragment" data-fragment-index="6">Sound</span>
+  <span class="tool green fragment" data-fragment-index="7">Images</span>
+  <span class="tool green fragment" data-fragment-index="8">Video</span>
+  <span class="tool green fragment" data-fragment-index="9">Motion</span>
+  <span class="fragment src-arrow" data-fragment-index="4">↓</span>
+  </span></span>
+  <span class="fragment" data-fragment-index="3">+</span>
+  <span class="term blue fragment algo" data-fragment-index="3">Algorithm<span class="algs">
+  <span class="tool blue fragment" data-fragment-index="11">Rules</span>
+  <span class="tool blue fragment" data-fragment-index="12">Markov chains</span>
+  <span class="tool blue fragment" data-fragment-index="13">Neural networks</span>
+  <span class="tool blue fragment" data-fragment-index="14">Transformers</span>
+  <span class="tool blue fragment" data-fragment-index="15">Diffusion</span>
+  </span></span>
+  <span class="fragment" data-fragment-index="3">=</span>
+  <span class="term pink fragment algo" data-fragment-index="1">Model<span class="srcs">
+  <span class="tool pink fragment" data-fragment-index="16">Claude Opus</span>
+  <span class="tool pink fragment" data-fragment-index="17">GPT</span>
+  <span class="tool pink fragment" data-fragment-index="18">Gemini</span>
+  <span class="tool pink fragment" data-fragment-index="19">Llama</span>
+  <span class="tool pink fragment" data-fragment-index="20">Stable Diffusion</span>
+  </span></span>
+  <span class="fragment eq-arrow" data-fragment-index="1">→</span>
+  <span class="term purple algo">Tool<span class="algs">
+  <span class="tool purple fragment" data-fragment-index="21">The Claude app</span>
+  <span class="tool purple fragment" data-fragment-index="22">Claude Code</span>
+  <span class="tool purple fragment" data-fragment-index="23">GitHub Copilot</span>
+  <span class="tool purple fragment" data-fragment-index="24">Cursor</span>
+  <span class="tool purple fragment" data-fragment-index="25">Microsoft 365 Copilot</span>
+  </span></span>
+  </div>
+  <aside class="notes">
+  The most important thing to understand about AI can be written as a simple formula. What we meet is a tool: an app or a program. (Click.) Inside the tool sits a model. It is made of (click) data, (click) plus an algorithm, a recipe for learning patterns from the examples. Whoever chooses the data also chooses what the model can do, and what it cannot.
+  The data come from many sources (click for each): text, numbers, sound, images, video and motion, made by people, and in the arts made by artists. That is why the questions of consent, credit and payment begin here, not at the output.
+  There are many kinds of algorithm (click for each): rules written by people, Markov chains that count what usually comes next, neural networks, transformers, which are behind the large language models, and diffusion, which is used for images, sound and video.
+  There are many models (click for each): Claude Opus from Anthropic, GPT from OpenAI, Gemini from Google, Llama from Meta, and Stable Diffusion, an image model from Stability AI.
+  The same model can be used through many different tools (click for each): the Claude app for writing and talking with it, Claude Code for programming, and it is also inside tools from other companies, such as GitHub Copilot, Cursor and Microsoft 365 Copilot. The tool is what we see; the model is the engine inside. So it is not enough to ask which tool an artist or a student uses, but also which model lies underneath, and what it was trained on.
+  An artist can try this directly: train a small model on one's own sounds, images or movements, and see what happens when the data are swapped.
   </aside>
   </section>
 
